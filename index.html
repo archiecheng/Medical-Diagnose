@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-09 16:00:55
+ * @LastEditTime: 2024-08-09 16:10:36
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -398,6 +398,15 @@
       .symptom_status input[type="radio"]:nth-of-type(3):checked + label {
         background-color: #f44336; /* 红色 */
       }
+
+      .scroll_arrow {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 50px solid #6c6c6c; /* 倒三角形的颜色 */
+        margin: 50px auto;
+      }
     </style>
   </head>
   <body>
@@ -573,6 +582,7 @@
               </div>
             </div>
           </div>
+          <div class="scroll_arrow"></div>
         </div>
       </div>
     </div>
