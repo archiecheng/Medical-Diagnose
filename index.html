@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-09 16:34:14
+ * @LastEditTime: 2024-08-09 16:50:13
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -416,6 +416,51 @@
         border-top: 50px solid #6c6c6c; /* 倒三角形的颜色 */
         margin: 50px auto;
       }
+
+      @media (max-width: 768px) {
+        .result_content {
+          height: auto;
+          scroll-snap-type: none;
+          overflow-y: auto;
+          padding: 10px;
+        }
+
+        .result_card {
+          height: auto;
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .result_image img {
+          height: auto;
+          max-height: 200px;
+          border-radius: 15px;
+        }
+
+        .symptom_name {
+          font-size: 16px;
+        }
+
+        .symptom_list {
+          flex-direction: column;
+        }
+
+        .simptom_item {
+          display: flex; /* 使用flex布局 */
+          justify-content: space-between; /* 在左右两端对齐 */
+          align-items: center; /* 垂直居中对齐 */
+          padding: 10px 0; /* 添加垂直内边距 */
+        }
+
+        .symptom_status {
+          display: flex; /* 使单选按钮组水平排列 */
+          gap: 10px; /* 按钮之间的间距 */
+        }
+
+        .message_tip {
+          font-size: 40px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -562,32 +607,6 @@
                     <label for="option3"></label>
                   </div>
                 </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -608,32 +627,6 @@
                 to your personal wellbeing
               </div>
               <div class="symptom_list">
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
                 <div class="simptom_item">
                   <div class="symptom_name">Symptom Name</div>
                   <div class="symptom_status">
@@ -758,32 +751,6 @@
                     <label for="option3"></label>
                   </div>
                 </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -804,32 +771,6 @@
                 to your personal wellbeing
               </div>
               <div class="symptom_list">
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
                 <div class="simptom_item">
                   <div class="symptom_name">Symptom Name</div>
                   <div class="symptom_status">
@@ -954,32 +895,6 @@
                     <label for="option3"></label>
                   </div>
                 </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
-                <div class="simptom_item">
-                  <div class="symptom_name">Symptom Name</div>
-                  <div class="symptom_status">
-                    <input type="radio" id="option1" name="options" />
-                    <label for="option1"></label>
-
-                    <input type="radio" id="option2" name="options" />
-                    <label for="option2"></label>
-
-                    <input type="radio" id="option3" name="options" />
-                    <label for="option3"></label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -1039,43 +954,71 @@
         const resultContent = document.querySelector(".result_content");
         const resultCards = document.querySelectorAll(".result_card");
         let isScrolling = false;
-        let scrollTimeout;
+        let lastScrollTime = 0;
 
-        function debounceScroll() {
-          if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
-          }
-          scrollTimeout = setTimeout(() => {
-            handleScroll();
-          }, 300); // 300ms的去抖延迟时间
+        function scrollToCard(targetCard) {
+          isScrolling = true;
+          targetCard.scrollIntoView({ behavior: "smooth" });
+
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1000); // 1000ms的停顿时间
         }
 
-        function handleScroll() {
-          if (!isScrolling) {
-            isScrolling = true;
-
-            // 找到离视口顶部最近的卡片
-            let closestCard = resultCards[0];
-            let minDistance = Math.abs(closestCard.getBoundingClientRect().top);
-
-            resultCards.forEach((card) => {
-              const distance = Math.abs(card.getBoundingClientRect().top);
-              if (distance < minDistance) {
-                minDistance = distance;
-                closestCard = card;
-              }
-            });
-
-            // 滚动到最近的卡片
-            closestCard.scrollIntoView({ behavior: "smooth" });
-
-            setTimeout(() => {
-              isScrolling = false;
-            }, 1000); // 1000ms的停顿时间
+        function handleScroll(event) {
+          if (isScrolling) {
+            return;
           }
+
+          const currentTime = new Date().getTime();
+          if (currentTime - lastScrollTime < 1000) {
+            event.preventDefault();
+            return;
+          }
+
+          lastScrollTime = currentTime;
+
+          // 获取滚动方向
+          const scrollTop = resultContent.scrollTop;
+          let scrollDirection = "down";
+          if (event.deltaY < 0) {
+            scrollDirection = "up";
+          }
+
+          // 找到离视口顶部最近的卡片
+          let closestCard = resultCards[0];
+          let minDistance = Math.abs(closestCard.getBoundingClientRect().top);
+
+          resultCards.forEach((card) => {
+            const distance = Math.abs(card.getBoundingClientRect().top);
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestCard = card;
+            }
+          });
+
+          // 根据滚动方向选择下一个或上一个卡片
+          let targetCard = closestCard;
+          if (scrollDirection === "down") {
+            const nextCard = closestCard.nextElementSibling;
+            if (nextCard && nextCard.classList.contains("result_card")) {
+              targetCard = nextCard;
+            }
+          } else {
+            const prevCard = closestCard.previousElementSibling;
+            if (prevCard && prevCard.classList.contains("result_card")) {
+              targetCard = prevCard;
+            }
+          }
+
+          // 滚动到目标卡片
+          scrollToCard(targetCard);
         }
 
-        resultContent.addEventListener("scroll", debounceScroll);
+        resultContent.addEventListener("wheel", function (event) {
+          event.preventDefault();
+          handleScroll(event);
+        });
       });
     </script>
   </body>
