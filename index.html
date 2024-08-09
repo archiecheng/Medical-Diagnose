@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-09 10:49:54
+ * @LastEditTime: 2024-08-09 11:02:24
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -175,6 +175,22 @@
         margin-top: 20px;
       }
 
+      .message_right_avatar{
+        width: 50px;
+        height: 50px;
+        margin-right: 30px;
+        float: right;
+        color: white;
+        border-radius: 25px;
+        position: relative;
+    }
+
+    .message_right_avatar img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
       .message_right_item {
         width: 55%;
         height: 100px;
@@ -285,22 +301,27 @@
             <!-- 左边 -->
             <div class="message_left clearfix">
               <div class="message_left_item">
-                <div class="message_left_content">今天吃点啥？</div>
+                <div class="message_left_content">
+                  Please enQter what you have been diagnosed with and any additional information.
+                  <a href="#">Click here for more information on how to use the app.</a>
+                </div>
+              </div>
+            </div>
+            <div class="message_left clearfix">
+              <div class="message_left_item">
+                <div class="message_left_content">
+                  Additional warnings and disclaimers
+                </div>
               </div>
             </div>
             <!--右边 -->
             <div class="message_right">
+              <div class="message_right_avatar">
+                <img src="./assets/images/avatar.png" alt="">
+              </div>
               <div class="message_right_item">
                 <div class="message_right_content">
-                  最近八合里周年庆店，咱们去薅羊毛呀
-                </div>
-              </div>
-            </div>
-            <!-- l_2 -->
-            <div class="message_left clearfix">
-              <div class="message_left_item">
-                <div class="message_left_content">
-                  行收拾一下走吧，早点去排个号
+                  Disease Name
                 </div>
               </div>
             </div>
