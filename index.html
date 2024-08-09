@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-09 16:10:36
+ * @LastEditTime: 2024-08-09 16:34:14
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -283,14 +283,23 @@
         flex-grow: 1;
         background-size: cover;
         height: 100vh;
+        overflow-y: scroll; /* 允许垂直滚动 */
+        scroll-snap-type: y mandatory; /* 启用scroll-snap */
+        -ms-overflow-style: none; /* IE and Edge 隐藏滚动条 */
+        scrollbar-width: none; /* Firefox 隐藏滚动条 */
+      }
+
+      .result_content::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera 隐藏滚动条 */
       }
 
       .result_card {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+        scroll-snap-align: start;
         padding: 40px;
       }
 
@@ -584,52 +593,490 @@
           </div>
           <div class="scroll_arrow"></div>
         </div>
+        <div class="result_card">
+          <div class="result_header">Symptoms2</div>
+          <div class="result_main">
+            <!-- <div class="result_name">Disease</div> -->
+            <div class="result_brief_intro">Brief Explanation...</div>
+            <div class="result_image">
+              <img src="./assets/images/diabetes.jpg" alt="" />
+            </div>
+            <div class="split_line"></div>
+            <div class="symptom_info">
+              <div class="symptom_intro">
+                For the following symptoms, please select YES|NO|MAYBE according
+                to your personal wellbeing
+              </div>
+              <div class="symptom_list">
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scroll_arrow"></div>
+        </div>
+        <div class="result_card">
+          <div class="result_header">Symptoms3</div>
+          <div class="result_main">
+            <!-- <div class="result_name">Disease</div> -->
+            <div class="result_brief_intro">Brief Explanation...</div>
+            <div class="result_image">
+              <img src="./assets/images/diabetes.jpg" alt="" />
+            </div>
+            <div class="split_line"></div>
+            <div class="symptom_info">
+              <div class="symptom_intro">
+                For the following symptoms, please select YES|NO|MAYBE according
+                to your personal wellbeing
+              </div>
+              <div class="symptom_list">
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scroll_arrow"></div>
+        </div>
+        <div class="result_card">
+          <div class="result_header">Symptoms4</div>
+          <div class="result_main">
+            <!-- <div class="result_name">Disease</div> -->
+            <div class="result_brief_intro">Brief Explanation...</div>
+            <div class="result_image">
+              <img src="./assets/images/diabetes.jpg" alt="" />
+            </div>
+            <div class="split_line"></div>
+            <div class="symptom_info">
+              <div class="symptom_intro">
+                For the following symptoms, please select YES|NO|MAYBE according
+                to your personal wellbeing
+              </div>
+              <div class="symptom_list">
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scroll_arrow"></div>
+        </div>
+        <div class="result_card">
+          <div class="result_header">Symptoms5</div>
+          <div class="result_main">
+            <!-- <div class="result_name">Disease</div> -->
+            <div class="result_brief_intro">Brief Explanation...</div>
+            <div class="result_image">
+              <img src="./assets/images/diabetes.jpg" alt="" />
+            </div>
+            <div class="split_line"></div>
+            <div class="symptom_info">
+              <div class="symptom_intro">
+                For the following symptoms, please select YES|NO|MAYBE according
+                to your personal wellbeing
+              </div>
+              <div class="symptom_list">
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+                <div class="simptom_item">
+                  <div class="symptom_name">Symptom Name</div>
+                  <div class="symptom_status">
+                    <input type="radio" id="option1" name="options" />
+                    <label for="option1"></label>
+
+                    <input type="radio" id="option2" name="options" />
+                    <label for="option2"></label>
+
+                    <input type="radio" id="option3" name="options" />
+                    <label for="option3"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scroll_arrow"></div>
+        </div>
       </div>
     </div>
-
     <script>
-      function toggleSidebar(toggleButtonSelector, sidebarSelector) {
-        $(document).ready(function () {
-          $(toggleButtonSelector).click(function () {
-            $(sidebarSelector).toggleClass("hidden");
+      document.addEventListener("DOMContentLoaded", function () {
+        // 侧边栏切换功能
+        function toggleSidebar(toggleButtonSelector, sidebarSelector) {
+          $(document).ready(function () {
+            $(toggleButtonSelector).click(function () {
+              $(sidebarSelector).toggleClass("hidden");
+            });
           });
-        });
-      }
+        }
 
-      function sendMessage(chatContainerId, buttonId, messageInputId) {
-        var send_message = document.getElementById(chatContainerId);
-        var domBtm = document.getElementById(buttonId);
-        var message = document.getElementById(messageInputId);
+        // 发送消息功能
+        function sendMessage(chatContainerId, buttonId, messageInputId) {
+          var send_message = document.getElementById(chatContainerId);
+          var domBtm = document.getElementById(buttonId);
+          var message = document.getElementById(messageInputId);
 
-        domBtm.addEventListener("click", function () {
-          var str = message.value;
-          if (str.trim() === "") {
-            return; // 如果输入内容为空则不发送消息
+          domBtm.addEventListener("click", function () {
+            var str = message.value;
+            if (str.trim() === "") {
+              return; // 如果输入内容为空则不发送消息
+            }
+
+            var ans =
+              '<div class="message_right_item">' +
+              '<div class="message_right_content">' +
+              str +
+              "</div>" +
+              '<div class="message_right_avatar">' +
+              '<img src="./assets/images/avatar.png" alt="">' +
+              " </div>" +
+              "</div>";
+
+            var oLi = document.createElement("div");
+            oLi.setAttribute("class", "message_right");
+            oLi.innerHTML = ans;
+            send_message.append(oLi);
+            message.value = "";
+
+            // 自动滚动到底部（如果需要）
+            send_message.scrollTop = send_message.scrollHeight;
+          });
+        }
+
+        // 初始化功能
+        sendMessage("message_list_id", "button", "send_message_content");
+        toggleSidebar("#toggleButton", "#sidebar");
+
+        // 滚动停顿功能
+        const resultContent = document.querySelector(".result_content");
+        const resultCards = document.querySelectorAll(".result_card");
+        let isScrolling = false;
+        let scrollTimeout;
+
+        function debounceScroll() {
+          if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
           }
+          scrollTimeout = setTimeout(() => {
+            handleScroll();
+          }, 300); // 300ms的去抖延迟时间
+        }
 
-          var ans =
-            '<div class="message_right_item">' +
-            '<div class="message_right_content">' +
-            str +
-            "</div>" +
-            '<div class="message_right_avatar">' +
-            '<img src="./assets/images/avatar.png" alt="">' +
-            " </div>" +
-            "</div>";
+        function handleScroll() {
+          if (!isScrolling) {
+            isScrolling = true;
 
-          var oLi = document.createElement("div");
-          oLi.setAttribute("class", "message_right");
-          oLi.innerHTML = ans;
-          send_message.append(oLi);
-          message.value = "";
+            // 找到离视口顶部最近的卡片
+            let closestCard = resultCards[0];
+            let minDistance = Math.abs(closestCard.getBoundingClientRect().top);
 
-          // 自动滚动到底部（如果需要）
-          send_message.scrollTop = send_message.scrollHeight;
-        });
-      }
+            resultCards.forEach((card) => {
+              const distance = Math.abs(card.getBoundingClientRect().top);
+              if (distance < minDistance) {
+                minDistance = distance;
+                closestCard = card;
+              }
+            });
 
-      sendMessage("message_list_id", "button", "send_message_content");
-      toggleSidebar("#toggleButton", "#sidebar");
+            // 滚动到最近的卡片
+            closestCard.scrollIntoView({ behavior: "smooth" });
+
+            setTimeout(() => {
+              isScrolling = false;
+            }, 1000); // 1000ms的停顿时间
+          }
+        }
+
+        resultContent.addEventListener("scroll", debounceScroll);
+      });
     </script>
   </body>
 </html>
