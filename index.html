@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-10 14:35:38
+ * @LastEditTime: 2024-08-10 14:41:54
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -75,9 +75,9 @@
 
       /* 左侧布局 */
       .side_bar.hidden {
-        width: 0; /* 收起后的宽度 */
-        padding: 0; /* 移除padding以确保侧边栏完全隐藏 */
-        margin-left: -10.625rem; /* 隐藏后的负边距 */
+        width: 0; 
+        padding: 0; 
+        margin-left: -10.625rem; 
         transition: width 0.6s ease, padding 0.6s ease, margin-left 0.6s ease;
       }
 
@@ -977,8 +977,6 @@
             oLi.innerHTML = ans;
             send_message.append(oLi);
             message.value = "";
-
-            // 自动滚动到底部（如果需要）
             send_message.scrollTop = send_message.scrollHeight;
           });
         }
