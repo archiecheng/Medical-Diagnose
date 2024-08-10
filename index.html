@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-09 16:50:13
+ * @LastEditTime: 2024-08-09 17:09:23
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -36,6 +36,7 @@
         overflow: hidden; /* 确保内容在收起时隐藏 */
         white-space: nowrap;
         text-overflow: ellipsis;
+        flex: 0.5;
       }
       .chat_content {
         background: url("./assets/images/background.png") no-repeat center
@@ -96,6 +97,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        flex: 3;
       }
 
       .chat_content .message_container {
@@ -180,7 +182,7 @@
       .message_right_avatar {
         width: 50px;
         height: 50px;
-        margin-right: 30px;
+        margin-left: 30px;
         float: right;
         color: white;
         border-radius: 25px;
@@ -207,7 +209,7 @@
       .message_right_content {
         position: relative;
         float: right;
-        margin-top: 24px;
+        /* margin-top: 24px; */
         margin-right: 5px;
         background: #e0e6ff;
         border-radius: 16px;
@@ -275,6 +277,7 @@
       }
 
       .result_content {
+        flex: 1;
         background-image: linear-gradient(
           to right,
           rgba(99, 106, 154, 0.8),
@@ -370,7 +373,7 @@
       .symptom_name {
         color: black;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 15px;
       }
 
       /* 设置单选框外观为隐藏 */
@@ -492,7 +495,7 @@
           </li>
         </ul>
       </div>
-      <div class="chat_content content_hidden">
+      <div class="chat_content content_show">
         <div class="message_container">
           <div class="message_tip">
             How Can We <br />
