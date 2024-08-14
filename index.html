@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-10 14:41:54
+ * @LastEditTime: 2024-08-13 21:44:55
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -60,6 +60,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         flex: 0.5;
+        height: 100%;
       }
 
       .chat_content {
@@ -70,7 +71,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: 100%;
       }
 
       /* 左侧布局 */
@@ -129,7 +130,7 @@
       .chat_content .message_container {
         position: relative;
         width: 100%;
-        height: calc(100% - 4.375rem); /* 70px 转换为 rem */
+        height: calc(100vh - 4.375rem); /* 70px 转换为 rem */
       }
 
       .message_tip {
@@ -529,7 +530,7 @@
           </li>
         </ul>
       </div>
-      <div class="chat_content content_show">
+      <div class="chat_content">
         <div class="message_container">
           <div class="message_tip">
             How Can We <br />
@@ -576,7 +577,7 @@
           <div class="send_button" id="button">send</div>
         </div>
       </div>
-      <div class="result_content content_show">
+      <div class="result_content">
         <div class="result_card">
           <div class="result_header">Symptoms</div>
           <div class="result_main">
@@ -941,6 +942,12 @@
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+
+        if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+          $(".chat_content").addClass('content_show');
+          $(".result_content").addClass('content_hidden');
+          
+        }
         // 侧边栏切换功能
         function toggleSidebar(toggleButtonSelector, sidebarSelector) {
           $(document).ready(function () {
