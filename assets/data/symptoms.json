@@ -1,0 +1,1290 @@
+{
+    "congestion": {
+        "diseases": [
+            {
+                "DiseaseName": "Common cold",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "slight body aches": {
+        "diseases": [
+            {
+                "DiseaseName": "Common cold",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "sneezing": {
+        "diseases": [
+            {
+                "DiseaseName": "Common cold",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "runny or stuffy nose": {
+        "diseases": [
+            {
+                "DiseaseName": "Influenza (Flu)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "cough": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "low-grade fever": {
+        "diseases": [
+            {
+                "DiseaseName": "Common cold",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "sore throat": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "unexplained weight loss": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "blurred vision": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "presence of ketones in the urine (ketones are a byproduct of the breakdown of muscle and fat that happens when there's not enough available insulin)": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "fatigue": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "increased thirst": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "extreme hunger": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "irritability": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "frequent urination": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "slow-healing sores": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "frequent infections such as gums or skin infections and vaginal infections": {
+        "diseases": [
+            {
+                "DiseaseName": "Diabetes",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "weight loss": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "sore throat and painful mouth sores": {
+        "diseases": [
+            {
+                "DiseaseName": "HIV/AIDS",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "swollen lymph glands mainly on the neck": {
+        "diseases": [
+            {
+                "DiseaseName": "HIV/AIDS",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "fever": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "muscle aches and joint pain": {
+        "diseases": [
+            {
+                "DiseaseName": "HIV/AIDS",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "diarrhea": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "headache": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "night sweats": {
+        "diseases": [
+            {
+                "DiseaseName": "Tuberculosis",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "problems seeing in one or both eyes ": {
+        "diseases": [
+            {
+                "DiseaseName": "Stroke",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "trouble walking": {
+        "diseases": [
+            {
+                "DiseaseName": "Stroke",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "numbness weakness or paralysis in the face arm or leg": {
+        "diseases": [
+            {
+                "DiseaseName": "Stroke",
+                "possibility": 0.5
+            }
+        ]
+    },
+    "trouble speaking and understanding what others are saying": {
+        "diseases": [
+            {
+                "DiseaseName": "Stroke",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "muscle or body aches": {
+        "diseases": [
+            {
+                "DiseaseName": "COVID-19",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "fever or chills": {
+        "diseases": [
+            {
+                "DiseaseName": "COVID-19",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "shortness of breath or difficulty breathing": {
+        "diseases": [
+            {
+                "DiseaseName": "COVID-19",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "new loss of taste or smell": {
+        "diseases": [
+            {
+                "DiseaseName": "COVID-19",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "congestion or runny nose": {
+        "diseases": [
+            {
+                "DiseaseName": "COVID-19",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "nausea or vomiting": {
+        "diseases": [
+            {
+                "DiseaseName": "COVID-19",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "coughing up blood or mucus": {
+        "diseases": [
+            {
+                "DiseaseName": "Tuberculosis",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "chest pain": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "low fever": {
+        "diseases": [
+            {
+                "DiseaseName": "Tuberculosis",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "tiredness": {
+        "diseases": [
+            {
+                "DiseaseName": "Tuberculosis",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "not feeling well in general": {
+        "diseases": [
+            {
+                "DiseaseName": "Tuberculosis",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "motor issues": {
+        "diseases": [
+            {
+                "DiseaseName": "Frontotemporal dementia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "changes in personality and behavior": {
+        "diseases": [
+            {
+                "DiseaseName": "Frontotemporal dementia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "difficulty with speech": {
+        "diseases": [
+            {
+                "DiseaseName": "Frontotemporal dementia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "dry persistent cough": {
+        "diseases": [
+            {
+                "DiseaseName": "Influenza (Flu)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "shortness of breath": {
+        "diseases": [
+            {
+                "DiseaseName": "Bird flu (avian influenza)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "chills and sweats": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "tiredness and weakness": {
+        "diseases": [
+            {
+                "DiseaseName": "Influenza (Flu)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "aching muscles": {
+        "diseases": [
+            {
+                "DiseaseName": "Influenza (Flu)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "eye pain": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "vomiting and diarrhea but this is more common in children than adults": {
+        "diseases": [
+            {
+                "DiseaseName": "Influenza (Flu)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "having ongoing worries about sleep.\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "feeling cranky, depressed or anxious.\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "having a hard time paying attention, focusing on tasks or remembering.\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "having a hard time falling asleep at night.": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "waking up too early.": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "making more errors or having more accidents.\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "waking up during the night.\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Insomnia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "disregard for right and wrong": {
+        "diseases": [
+            {
+                "DiseaseName": "Antisocial personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "stealing": {
+        "diseases": [
+            {
+                "DiseaseName": "Antisocial personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "lack of remorse": {
+        "diseases": [
+            {
+                "DiseaseName": "Antisocial personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "using aliases": {
+        "diseases": [
+            {
+                "DiseaseName": "Antisocial personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "persistent lying": {
+        "diseases": [
+            {
+                "DiseaseName": "Antisocial personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "inappropriate anger": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "suicidal behavior": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "emotional instability": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "fear of abandonment": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "identity disturbance": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "feelings of emptiness": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "unstable relationships": {
+        "diseases": [
+            {
+                "DiseaseName": "Borderline personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "make achievements and talents seem bigger than they are": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "be critical of and look down on people they feel are not important.expect special favors and expect other people to do what they want without questioning them": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "be preoccupied with fantasies about success power brilliance beauty or the perfect mate": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "believe they are superior to others and can only spend time with or be understood by equally special people": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "have an unreasonably high sense of self-importance and require constant excessive admiration": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "expect to be recognized as superior even without achievements": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "be critical of and look down on people they feel are not important": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "feel that they deserve privileges and special treatment": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "take advantage of others to get what they want": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "have an inability or unwillingness to recognize the needs and feelings of others": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "be envious of others and believe others envy them": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "behave in an arrogant way brag a lot and come across as conceited": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "insist on having the best of everything ?\u20ac? for instance the best car or office": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "become impatient or angry when they don't receive special recognition or treatment": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "have major problems interacting with others and easily feel slighted": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "react with rage or contempt and try to belittle other people to make themselves appear superior": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "experience major problems dealing with stress and adapting to change": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 0.5
+            }
+        ]
+    },
+    "have difficulty managing their emotions and behavior": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "withdraw from or avoid situations in which they might fail": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "feel depressed and moody because they fall short of perfection": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "have secret feelings of insecurity shame humiliation and fear of being exposed as a failure": {
+        "diseases": [
+            {
+                "DiseaseName": "Narcissistic personality disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "vomiting": {
+        "diseases": [
+            {
+                "DiseaseName": "Plague ",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "weakness": {
+        "diseases": [
+            {
+                "DiseaseName": "Plague ",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "stomach pain": {
+        "diseases": [
+            {
+                "DiseaseName": "Plague ",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "chills": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "a discharge in one or both eyes that forms a crust during the night that may prevent your eye or eyes from opening in the morning": {
+        "diseases": [
+            {
+                "DiseaseName": "Pink eye (conjunctivitis)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "sensitivity to light called photophobia": {
+        "diseases": [
+            {
+                "DiseaseName": "Pink eye (conjunctivitis)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "itchiness in one or both eyes": {
+        "diseases": [
+            {
+                "DiseaseName": "Pink eye (conjunctivitis)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "tearing": {
+        "diseases": [
+            {
+                "DiseaseName": "Pink eye (conjunctivitis)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "a gritty feeling in one or both eyes": {
+        "diseases": [
+            {
+                "DiseaseName": "Pink eye (conjunctivitis)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "redness in one or both eyes": {
+        "diseases": [
+            {
+                "DiseaseName": "Pink eye (conjunctivitis)",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "loose stools": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "hunger pains": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "upset stomach or feeling like you could throw up": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "not wanting to eat": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "gas": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "stomachache or stomach pain": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "cravings for salty food": {
+        "diseases": [
+            {
+                "DiseaseName": "Tapeworm infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "chest tightness or pain": {
+        "diseases": [
+            {
+                "DiseaseName": "Asthma",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "coughing or wheezing attacks that are worsened by a respiratory virus such as a cold or the flu": {
+        "diseases": [
+            {
+                "DiseaseName": "Asthma",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "wheezing when exhaling": {
+        "diseases": [
+            {
+                "DiseaseName": "Asthma",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "extremely disorganized or unusual motor behavior ": {
+        "diseases": [
+            {
+                "DiseaseName": "Schizophrenia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "hallucinations ": {
+        "diseases": [
+            {
+                "DiseaseName": "Schizophrenia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "negative symptoms": {
+        "diseases": [
+            {
+                "DiseaseName": "Schizophrenia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "disorganized speech and thinking ": {
+        "diseases": [
+            {
+                "DiseaseName": "Schizophrenia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "delusions": {
+        "diseases": [
+            {
+                "DiseaseName": "Schizophrenia",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "withdrawal from work or social activities": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "problems with speaking or writing": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "misplacing things and losing the ability to retrace steps": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "memory loss": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "confusion with time or place": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "decreased or poor judgment": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "difficulty planning and solving problems": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "changes in mood and personality": {
+        "diseases": [
+            {
+                "DiseaseName": "Alzheimer's Disease",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "racing thoughts": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "risk-taking behaviors": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "increased activity or energy": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "mood swings": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "depressive episodes": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "decreased need for sleep": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "manic episodes": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "poor decision-making": {
+        "diseases": [
+            {
+                "DiseaseName": "Bipolar Disorder",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "stomach cramping pain or tenderness": {
+        "diseases": [
+            {
+                "DiseaseName": "E. coli infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "nausea and vomiting": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "diarrhea which may range from mild and watery to severe and bloody": {
+        "diseases": [
+            {
+                "DiseaseName": "E. coli infection",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "runny or stuffy nose.": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "fever but not always.": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "watery red eyes": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "aching muscles.\r": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "body aches.": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "tiredness and weakness.": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "diarrhea.": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "feeling sick to the stomach vomiting but this is more common in children than adults.": {
+        "diseases": [
+            {
+                "DiseaseName": "H1N1 flu",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "abdominal pain": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "general feeling of discomfort": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "muscle or joint pain": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "rapid breathing": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "rapid heart rate": {
+        "diseases": [
+            {
+                "DiseaseName": "Malaria",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "cough\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "extreme tiredness (fatigue) often due to poor sleep\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "itchy nose roof of mouth or throat": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "mucus that runs down the back of your throat (postnasal drip)\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "runny nose and nasal stuffiness (congestion)": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "sneezing\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "swollen bruised-appearing skin under the eyes (allergic shiners)\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "watery itchy red eyes (allergic conjunctivitis)\r": {
+        "diseases": [
+            {
+                "DiseaseName": "Hay fever",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "confusion": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "high fever and stiff neck": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "fecal material or fecal odor in the vomit": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "rectal bleeding": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "severe abdominal pain or cramping": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    },
+    "end": {
+        "diseases": [
+            {
+                "DiseaseName": "Nausea",
+                "possibility": 1.0
+            }
+        ]
+    }
+}
