@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-16 17:51:08
+ * @LastEditTime: 2024-08-16 21:42:26
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -582,7 +582,7 @@
         </div>
       </div>
       <div class="result_content">
-        <div class="result_card">
+        <!-- <div class="result_card">
           <div class="result_header">Symptoms</div>
           <div class="result_main">
             <div class="result_brief_intro">Brief Explanation...</div>
@@ -652,7 +652,7 @@
             </div>
           </div>
           <div class="scroll_arrow"></div>
-        </div>
+        </div> -->
         <!-- <div class="result_card">
           <div class="result_header">Symptoms2</div>
           <div class="result_main">
@@ -955,26 +955,37 @@
           });
         }
 
+        // 预加载JSON数据
+        var diseasesData = [];
+
+        fetch("assets/data/diseases.json")
+          .then((response) => response.json())
+          .then((data) => {
+            // 在这里处理你的 JSON 数据
+            diseasesData = data;
+          })
+          .catch((error) => {
+            console.error("Error loading JSON:", error);
+          });
+
+        // 预加载JSON数据
+        var symptomsData = [];
+
+        fetch("assets/data/symptoms.json")
+          .then((response) => response.json())
+          .then((data) => {
+            // 在这里处理你的 JSON 数据
+            symptomsData = data;
+          })
+          .catch((error) => {
+            console.error("Error loading JSON:", error);
+          });
+
         // 发送消息功能
         function sendMessage(chatContainerId, buttonId, messageInputId) {
           var send_message = document.getElementById(chatContainerId);
           var domBtm = document.getElementById(buttonId);
           var message = document.getElementById(messageInputId);
-
-          // 预加载JSON数据
-          var diseasesData = {};
-
-          fetch("assets/data/diseases.json")
-            .then((response) => response.json())
-            .then((data) => {
-              // 在这里处理你的 JSON 数据
-              diseasesData = data;
-              console.log(diseasesData);
-            })
-            .catch((error) => {
-              console.error("Error loading JSON:", error);
-            });
-
           domBtm.addEventListener("click", function () {
             var str = message.value;
             if (str.trim() === "") {
@@ -1002,7 +1013,6 @@
             // 检索疾病名称并显示症状
             setTimeout(function () {
               symptoms = diseasesData[str].Symptom;
-              console.log(symptoms);
 
               var replyMessage;
 
@@ -1028,55 +1038,138 @@
             }, 1000); // 模拟延迟1秒后回复
 
             setTimeout(function () {
-              renderSymptomsByDiseaseName(str, symptoms);
+              renderOtherDiseasesByKnownDiseaseSymptoms(symptoms);
             }, 1000);
           });
         }
 
-        function renderSymptomsByDiseaseName(diseaseName, symptoms) {
-          const resultCard = document.querySelector(".result_card");
-          const symptomListContainer =
-            resultCard.querySelector(".symptom_list");
-
+        function renderOtherDiseasesByKnownDiseaseSymptoms(symptoms) {
           // 清空当前的症状列表
-          symptomListContainer.innerHTML = "";
+          // symptomListContainer.innerHTML = "";
 
-          console.log(symptoms);
+          var similarDiseasesSet = new Set();
 
-          // 遍历症状并添加到页面
+          // 根据现在疾病的已有症状获取其他所有可能的疾病
+          for (let i = 0; i < symptoms.length; i++) {
+            let symptomName = symptoms[i].SymptomName; // 获取当前症状的名称
+            for (let symptomItem in symptomsData) {
+              if (symptomName === symptomItem) {
+                // 检查症状名称是否匹配
+                let diseasesArray = symptomsData[symptomItem].diseases; // 获取对应的diseases数组
+                for (let k = 0; k < diseasesArray.length; k++) {
+                  similarDiseasesSet.add(diseasesArray[k].DiseaseName); // 将疾病名称添加到集合中
+                }
+              }
+            }
+          }
+          console.log(similarDiseasesSet);
+
+          // 遍历相似疾病的症状并添加到页面
+          for (similarDisease of similarDiseasesSet) {
+            for (let existingDisease in diseasesData) {
+              if (existingDisease == similarDisease) {
+                console.log(existingDisease);
+                console.log(diseasesData[existingDisease].Symptom);
+
+                // 调用函数生成卡片并插入到页面中
+                createResultCard(
+                  existingDisease,
+                  diseasesData[existingDisease].Symptom
+                );
+              }
+            }
+          }
+        }
+
+        function createResultCard(diseaseName, symptoms) {
+          // 获取目标容器元素
+          const resultContentContainer =
+            document.querySelector(".result_content");
+
+          // 创建 result_card 元素
+          const resultCard = document.createElement("div");
+          resultCard.classList.add("result_card");
+
+          // 创建 result_header 元素
+          const resultHeader = document.createElement("div");
+          resultHeader.classList.add("result_header");
+          resultHeader.innerHTML = `${diseaseName}`; // 或者可以设置为疾病名称
+          resultCard.appendChild(resultHeader);
+
+          // 创建 result_main 元素
+          const resultMain = document.createElement("div");
+          resultMain.classList.add("result_main");
+          resultCard.appendChild(resultMain);
+
+          // 创建 result_brief_intro 元素
+          const resultBriefIntro = document.createElement("div");
+          resultBriefIntro.classList.add("result_brief_intro");
+          resultBriefIntro.textContent = `Brief Explanation about ${diseaseName}...`;
+          resultMain.appendChild(resultBriefIntro);
+
+          // 创建 result_image 元素
+          const resultImage = document.createElement("div");
+          resultImage.classList.add("result_image");
+          const img = document.createElement("img");
+          img.src = `./assets/images/${diseaseName.toLowerCase()}.jpg`;
+          img.alt = diseaseName;
+          resultImage.appendChild(img);
+          resultMain.appendChild(resultImage);
+
+          // 创建 split_line 元素
+          const splitLine = document.createElement("div");
+          splitLine.classList.add("split_line");
+          resultMain.appendChild(splitLine);
+
+          // 创建 symptom_info 元素
+          const symptomInfo = document.createElement("div");
+          symptomInfo.classList.add("symptom_info");
+          resultMain.appendChild(symptomInfo);
+
+          // 创建 symptom_intro 元素
+          const symptomIntro = document.createElement("div");
+          symptomIntro.classList.add("symptom_intro");
+          symptomIntro.textContent =
+            "For the following symptoms, please select YES|NO|MAYBE according to your personal wellbeing";
+          symptomInfo.appendChild(symptomIntro);
+
+          // 创建 symptom_list 元素
+          const symptomListContainer = document.createElement("div");
+          symptomListContainer.classList.add("symptom_list");
+          symptomInfo.appendChild(symptomListContainer);
+
+          // 遍历 symptoms 数组，创建 symptom_item 元素
           symptoms.forEach((symptom, index) => {
             const symptomItem = document.createElement("div");
             symptomItem.classList.add("simptom_item");
             const symptomName =
-              symptom.SymptomName.replace(/\s+/g, "_") + "_" + index;
+              symptom.SymptomName.replace(/\s+/g, "_") + "_" + index; // 假设 symptom 是一个字符串
             symptomItem.innerHTML = `
-        <div class="symptom_name">${symptom.SymptomName}</div>
-        <div class="symptom_status">
-            <input type="radio" id="${symptomName}_yes" name="${symptomName}" value="yes" />
-            <label for="${symptomName}_yes"></label>
+            <div class="symptom_name">${symptom.SymptomName}</div>
+            <div class="symptom_status">
+                <input type="radio" id="${symptomName}_yes" name="${symptomName}" value="yes" />
+                <label for="${symptomName}_yes"></label>
 
-            <input type="radio" id="${symptomName}_no" name="${symptomName}" value="no" />
-            <label for="${symptomName}_no"></label>
+                <input type="radio" id="${symptomName}_no" name="${symptomName}" value="no" />
+                <label for="${symptomName}_no"></label>
 
-            <input type="radio" id="${symptomName}_maybe" name="${symptomName}" value="maybe" />
-            <label for="${symptomName}_maybe"></label>
-        </div>
-    `;
+                <input type="radio" id="${symptomName}_maybe" name="${symptomName}" value="maybe" />
+                <label for="${symptomName}_maybe"></label>
+            </div>
+        `;
             symptomListContainer.appendChild(symptomItem);
           });
-          resultCard.querySelector(
-            ".result_header"
-          ).textContent = `${diseaseName}`;
-          // 更新卡片中的疾病信息
-          resultCard.querySelector(
-            ".result_brief_intro"
-          ).textContent = `This is a brief explanation about ${diseaseName}.`;
-          resultCard.querySelector(
-            ".result_image img"
-          ).src = `./assets/images/${diseaseName.toLowerCase()}.jpg`;
 
-          // 显示结果卡片
-          resultCard.style.display = "block";
+          // 创建 scroll_arrow 元素
+          const scrollArrow = document.createElement("div");
+          scrollArrow.classList.add("scroll_arrow");
+          resultCard.appendChild(scrollArrow);
+
+          // 将 result_card 添加到目标容器中
+          resultContentContainer.appendChild(resultCard);
+
+          // 每次创建新卡片后，重新获取 resultCards
+          const resultCards = document.querySelectorAll(".result_card");
         }
 
         // 获取用户选择结果的函数
@@ -1106,34 +1199,30 @@
 
         // 示例调用
         const results = getUserSelections();
-        console.log(results);
 
         // 初始化功能
         sendMessage("message_list_id", "button", "send_message_content");
         toggleSidebar("#toggleButton", "#sidebar");
 
         // 滚动停顿功能
-        const resultContent = document.querySelector(".result_content");
-        const resultCards = document.querySelectorAll(".result_card");
+        // 初始变量定义
         let isScrolling = false;
         let lastScrollTime = 0;
 
+        // 获取容器元素
+        const resultContent = document.querySelector(".result_content");
+
+        // 滚动到目标卡片的函数
         function scrollToCard(targetCard) {
           isScrolling = true;
           targetCard.scrollIntoView({ behavior: "smooth" });
 
           setTimeout(() => {
             isScrolling = false;
-            // 如果当前卡片是最后一个 result_card，则获取用户的选择结果
-            if (targetCard === resultCards[resultCards.length - 1]) {
-              const userSelections = getUserSelections();
-              console.log("User Selections:", userSelections);
-
-              // 在这里处理用户的选择结果，比如显示在页面上或提交到服务器
-            }
-          }, 1000); // 1000ms的停顿时间
+          }, 1000); // 防止过早解除锁定状态
         }
 
+        // 处理滚动事件
         function handleScroll(event) {
           if (isScrolling) {
             return;
@@ -1147,12 +1236,12 @@
 
           lastScrollTime = currentTime;
 
+          // 重新获取 resultCards
+          const resultCards = document.querySelectorAll(".result_card");
+
           // 获取滚动方向
           const scrollTop = resultContent.scrollTop;
-          let scrollDirection = "down";
-          if (event.deltaY < 0) {
-            scrollDirection = "up";
-          }
+          let scrollDirection = event.deltaY < 0 ? "up" : "down";
 
           // 找到离视口顶部最近的卡片
           let closestCard = resultCards[0];
@@ -1184,6 +1273,7 @@
           scrollToCard(targetCard);
         }
 
+        // 绑定滚动事件
         resultContent.addEventListener("wheel", function (event) {
           event.preventDefault();
           handleScroll(event);
