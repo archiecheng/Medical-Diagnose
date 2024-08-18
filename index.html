@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 14:43:49
+ * @LastEditTime: 2024-08-18 15:24:04
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -993,7 +993,6 @@
         // 9. 迭代更新
         let predictionCount = 0;
         let finalResults = [];
-
         function onCardSwipe(
           userSelections,
           diseasesData,
@@ -1031,11 +1030,27 @@
 
             // 如果找到未重复的疾病
             if (topDisease) {
-              finalResults.push(topDisease);
+              // 获取当前疾病的症状并将用户的选择记录下来
+              const symptoms = diseasesData[topDisease.diseaseName].Symptom.map(
+                (symptomInfo) => {
+                  return {
+                    SymptomName: symptomInfo.SymptomName,
+                    choice: userSelections[symptomInfo.SymptomName] || "no",
+                  };
+                }
+              );
 
+              // 将疾病和症状信息一起推入 finalResults
+              finalResults.push({
+                diseaseName: topDisease.diseaseName,
+                score: topDisease.score,
+                symptoms: symptoms,
+              });
+
+              // 创建结果卡片
               createResultCard(
                 topDisease.diseaseName,
-                diseasesData[topDisease.diseaseName].Symptom,
+                symptoms, // 直接传递症状列表
                 true
               );
 
@@ -1052,8 +1067,11 @@
 
         // 10. 生成最终报告
         function generateFinalReport(finalResults) {
-          console.log("Final Results: ", finalResults);
-          window.location.href = "pdf.html";
+          // 将 finalResults 保存到 localStorage
+          localStorage.setItem("finalResults", JSON.stringify(finalResults));
+          console.log(finalResults);
+          
+          window.location.href = `pdf.html`;
         }
 
         // 滚动停顿功能

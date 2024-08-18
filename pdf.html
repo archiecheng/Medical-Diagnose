@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-16 15:06:28
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-16 16:06:06
+ * @LastEditTime: 2024-08-18 15:25:43
  * @FilePath: \medical_diagnose\pdf.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -65,7 +65,8 @@
       }
 
       .profile td {
-        color: #d0d0d0;
+        color: black;
+        font-size: 1.5em;
       }
 
       .disease_match {
@@ -84,6 +85,10 @@
         width: 100%;
         height: 12.5rem;
         border: 0.0625rem solid black;
+        font-size: 1.5em;
+        box-sizing: border-box;
+        padding: 1.5625rem;
+        overflow-y: auto;
       }
     </style>
   </head>
@@ -97,11 +102,11 @@
           </tr>
           <tr>
             <td>These symptoms do occur</td>
-            <td>List of Symptoms</td>
+            <td></td>
           </tr>
           <tr>
             <td>Unsure if these symptoms occur</td>
-            <td>List of Symptoms</td>
+            <td></td>
           </tr>
         </table>
       </div>
@@ -126,5 +131,80 @@
         <div class="disease_match_main"></div>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 从 localStorage 中获取 finalResults 数据
+        const finalResults = JSON.parse(localStorage.getItem("finalResults"));
+
+        // 渲染症状到 Symptom Profile 区域
+        renderSymptomProfile(finalResults);
+
+        // 渲染疾病匹配到 Disease Matches 区域
+        renderDiseaseMatches(finalResults);
+      });
+
+      function renderSymptomProfile(finalResults) {
+        const occurSymptoms = [];
+        const unsureSymptoms = [];
+
+        finalResults.forEach((result) => {
+          result.symptoms.forEach((symptom) => {
+            if (symptom.choice === "yes") {
+              occurSymptoms.push(symptom.SymptomName);
+            } else if (symptom.choice === "maybe") {
+              unsureSymptoms.push(symptom.SymptomName);
+            }
+          });
+        });
+
+        // 将症状列表渲染到对应的表格单元格中
+        document.querySelector(
+          ".profile tr:nth-child(2) td:nth-child(2)"
+        ).textContent = occurSymptoms.join(", ");
+        document.querySelector(
+          ".profile tr:nth-child(3) td:nth-child(2)"
+        ).textContent = unsureSymptoms.join(", ");
+      }
+
+      function renderDiseaseMatches(finalResults) {
+        // 按匹配度将 finalResults 分类
+        const matches85_100 = [];
+        const matches70_85 = [];
+        const matches55_70 = [];
+        const matches40_55 = [];
+        const matchesBelow40 = [];
+
+        finalResults.forEach((result) => {
+          if (result.score >= 0.85) {
+            matches85_100.push(result.diseaseName);
+          } else if (result.score >= 0.7) {
+            matches70_85.push(result.diseaseName);
+          } else if (result.score >= 0.55) {
+            matches55_70.push(result.diseaseName);
+          } else if (result.score >= 0.4) {
+            matches40_55.push(result.diseaseName);
+          } else {
+            matchesBelow40.push(result.diseaseName);
+          }
+        });
+
+        // 渲染疾病名称到相应的匹配区域
+        document.querySelector(
+          ".disease_match:nth-child(2) .disease_match_main"
+        ).textContent = matches85_100.join(", ");
+        document.querySelector(
+          ".disease_match:nth-child(3) .disease_match_main"
+        ).textContent = matches70_85.join(", ");
+        document.querySelector(
+          ".disease_match:nth-child(4) .disease_match_main"
+        ).textContent = matches55_70.join(", ");
+        document.querySelector(
+          ".disease_match:nth-child(5) .disease_match_main"
+        ).textContent = matches40_55.join(", ");
+        document.querySelector(
+          ".disease_match:nth-child(6) .disease_match_main"
+        ).textContent = matchesBelow40.join(", ");
+      }
+    </script>
   </body>
 </html>
