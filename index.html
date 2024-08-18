@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 13:05:14
+ * @LastEditTime: 2024-08-18 13:25:09
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -776,11 +776,11 @@
         // 3. 根据疾病名称创建卡片并渲染症状
         function renderSymptomsByDiseaseName(diseaseName, symptoms) {
           // console.log(symptoms);
-          createResultCard(diseaseName, symptoms, false);
+          createResultCard(diseaseName, symptoms);
         }
 
         // 4. 创建卡片
-        function createResultCard(diseaseName, symptoms, isPredicted = false) {
+        function createResultCard(diseaseName, symptoms) {
           // 获取目标容器元素
           const resultContentContainer =
             document.querySelector(".result_content");
@@ -792,13 +792,7 @@
           // 创建 result_header 元素
           const resultHeader = document.createElement("div");
           resultHeader.classList.add("result_header");
-
-          // 根据是否是预测卡片，设置标题内容
-          if (isPredicted) {
-            resultHeader.innerHTML = `Predicted Disease: ${diseaseName}`;
-          } else {
-            resultHeader.innerHTML = `${diseaseName}`; // 或者可以设置为疾病名称
-          }
+          resultHeader.innerHTML = `Predicted Disease: ${diseaseName}`;
           resultCard.appendChild(resultHeader);
 
           // 创建 result_main 元素
@@ -834,13 +828,9 @@
           // 创建 symptom_intro 元素
           const symptomIntro = document.createElement("div");
           symptomIntro.classList.add("symptom_intro");
-
-          // 对于预测卡片，不需要提示用户选择选项
-          if (!isPredicted) {
-            symptomIntro.textContent =
-              "For the following symptoms, please select YES|NO|MAYBE according to your personal wellbeing";
-            symptomInfo.appendChild(symptomIntro);
-          }
+          symptomIntro.textContent =
+            "For the following symptoms, please select YES|NO|MAYBE according to your personal wellbeing";
+          symptomInfo.appendChild(symptomIntro);
 
           // 创建 symptom_list 元素
           const symptomListContainer = document.createElement("div");
@@ -854,14 +844,8 @@
             const symptomName =
               symptom.SymptomName.replace(/\s+/g, "_") + "_" + index;
 
-            if (isPredicted) {
-              // 仅展示症状名称
-              symptomItem.innerHTML = `
-            <div class="symptom_name">${symptom.SymptomName}</div>
-        `;
-            } else {
-              // 展示症状名称并附带选择项
-              symptomItem.innerHTML = `
+            // 展示症状名称并附带选择项
+            symptomItem.innerHTML = `
             <div class="symptom_name">${symptom.SymptomName}</div>
             <div class="symptom_status">
                 <input type="radio" id="${symptomName}_yes" name="${symptomName}" value="yes" />
@@ -874,22 +858,20 @@
                 <label for="${symptomName}_maybe"></label>
             </div>
         `;
-            }
             symptomListContainer.appendChild(symptomItem);
           });
 
-          // 创建 scroll_arrow 元素，仅在非预测卡片中添加
-          if (!isPredicted) {
-            const scrollArrow = document.createElement("div");
-            scrollArrow.classList.add("scroll_arrow");
-            resultCard.appendChild(scrollArrow);
-          }
+          // 创建 scroll_arrow 元素，添加到卡片中以提示用户可以滚动
+          const scrollArrow = document.createElement("div");
+          scrollArrow.classList.add("scroll_arrow");
+          resultCard.appendChild(scrollArrow);
 
           // 将 result_card 添加到目标容器中
           resultContentContainer.appendChild(resultCard);
 
-          // 滚动到新创建的卡片
+          // // 滚动到新创建的卡片
           // scrollToCard(resultCard);
+
           // 每次创建新卡片后，重新获取 resultCards
           const resultCards = document.querySelectorAll(".result_card");
         }
@@ -1027,8 +1009,7 @@
             const topDisease = rankedDiseases[0];
             createResultCard(
               topDisease.diseaseName,
-              diseasesData[topDisease.diseaseName].Symptom,
-              true // 传递 `true` 来表示这是一个预测卡片
+              diseasesData[topDisease.diseaseName].Symptom
             );
           }
         }
