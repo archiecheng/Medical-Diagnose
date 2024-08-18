@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 13:55:28
+ * @LastEditTime: 2024-08-18 14:39:36
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -833,6 +833,9 @@
           symptomListContainer.classList.add("symptom_list");
           symptomInfo.appendChild(symptomListContainer);
 
+          // 生成唯一ID前缀
+          const cardIdPrefix = `${diseaseName}_${new Date().getTime()}`;
+
           symptoms.forEach((symptom, index) => {
             const symptomItem = document.createElement("div");
             symptomItem.classList.add("simptom_item");
@@ -841,18 +844,19 @@
               /\s+/g,
               "_"
             )}_${index}`;
+            const uniqueSymptomId = `${cardIdPrefix}_${symptomName}`;
 
             symptomItem.innerHTML = `
       <div class="symptom_name">${symptom.SymptomName}</div>
       <div class="symptom_status">
-          <input type="radio" id="${symptomName}_yes" name="${symptomName}" value="yes" />
-          <label for="${symptomName}_yes"></label>
+          <input type="radio" id="${uniqueSymptomId}_yes" name="${uniqueSymptomId}" value="yes" />
+          <label for="${uniqueSymptomId}_yes"></label>
 
-          <input type="radio" id="${symptomName}_no" name="${symptomName}" value="no" />
-          <label for="${symptomName}_no"></label>
+          <input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
+          <label for="${uniqueSymptomId}_no"></label>
 
-          <input type="radio" id="${symptomName}_maybe" name="${symptomName}" value="maybe" />
-          <label for="${symptomName}_maybe"></label>
+          <input type="radio" id="${uniqueSymptomId}_maybe" name="${uniqueSymptomId}" value="maybe" />
+          <label for="${uniqueSymptomId}_maybe"></label>
       </div>
     `;
             symptomListContainer.appendChild(symptomItem);
@@ -864,6 +868,7 @@
 
           resultContentContainer.appendChild(resultCard);
         }
+
         // 5. 获取用户选择结果的函数
         function getUserSelections() {
           // 获取所有的症状项
@@ -964,7 +969,11 @@
         }
 
         // 8. 疾病排序与筛选
-        function combineAndRankDiseases(diseaseScores, relatedDiseases) {
+        function combineAndRankDiseases(
+          diseaseScores,
+          relatedDiseases,
+          initialDisease
+        ) {
           const combinedScores = { ...diseaseScores };
 
           for (const [diseaseName, score] of Object.entries(relatedDiseases)) {
@@ -976,12 +985,20 @@
           }
 
           return Object.entries(combinedScores)
+            .filter(([diseaseName]) => diseaseName !== initialDisease) // 排除最初输入的疾病
             .sort((a, b) => b[1] - a[1]) // 从高到低排序
             .map(([diseaseName, score]) => ({ diseaseName, score }));
         }
 
         // 9. 迭代更新
-        function onCardSwipe(userSelections, diseasesData, symptomsData) {
+        let predictionCount = 0;
+        let finalResults = [];
+        function onCardSwipe(
+          userSelections,
+          diseasesData,
+          symptomsData,
+          initialDisease
+        ) {
           const diseaseScores = calculateDiseaseScores(
             userSelections,
             diseasesData
@@ -995,19 +1012,35 @@
 
           const rankedDiseases = combineAndRankDiseases(
             diseaseScores,
-            relatedDiseases
+            relatedDiseases,
+            initialDisease
           );
 
           if (rankedDiseases.length > 0) {
             const topDisease = rankedDiseases[0];
+            finalResults.push(topDisease);
+
             createResultCard(
               topDisease.diseaseName,
               diseasesData[topDisease.diseaseName].Symptom,
               true
             );
+
+            predictionCount++;
+
+            if (predictionCount === 5) {
+              generateFinalReport(finalResults);
+            }
           }
         }
 
+        // 生成最终报告
+        function generateFinalReport(finalResults) {
+          console.log("Final Results: ", finalResults);
+          window.location.href = "pdf.html";
+        }
+
+        // 滚动停顿功能
         // 滚动停顿功能
         let isScrolling = false;
         let lastScrollTime = 0;
@@ -1074,15 +1107,21 @@
           }
 
           // 执行进一步的逻辑处理（如创建新卡片）
-          onCardSwipe(userSelections, diseasesData, symptomsData);
+          const initialDisease = document
+            .querySelector(".result_card .result_header")
+            .textContent.replace("Disease: ", "");
+          onCardSwipe(
+            userSelections,
+            diseasesData,
+            symptomsData,
+            initialDisease
+          );
 
-          // 如果需要滚动到新卡片，调整目标卡片为刚创建的卡片（如果有）
           const newResultCards = document.querySelectorAll(".result_card");
           if (newResultCards.length > resultCards.length) {
             targetCard = newResultCards[newResultCards.length - 1];
           }
 
-          // 平滑滚动效果
           scrollToCard(targetCard);
         }
 
