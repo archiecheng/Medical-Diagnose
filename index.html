@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 15:24:04
+ * @LastEditTime: 2024-08-18 15:47:51
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -164,12 +164,26 @@
         margin-top: 1.25rem; /* 20px 转换为 rem */
       }
 
+      /* 左边 */
       .message_left_item {
         width: 55%;
         height: 6.25rem; /* 100px 转换为 rem */
         float: left;
         margin-top: 0.625rem; /* 10px 转换为 rem */
         margin-left: 1.25rem; /* 20px 转换为 rem */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
+      }
+
+      /* 新增的左边消息，初始透明度和位置设置 */
+      .message_left_item.new {
+        opacity: 0; /* 初始透明度为0 */
+        transform: translateY(20px); /* 初始位置稍微向下 */
+      }
+
+      /* 动画触发样式 */
+      .message_left_item.new.fade-in {
+        opacity: 1; /* 最终透明度为1 */
+        transform: translateY(0); /* 最终位置为原始位置 */
       }
 
       .message_left_item .message_left_content {
@@ -205,6 +219,15 @@
         width: 100%;
         height: 7.5rem; /* 120px 转换为 rem */
         margin-top: 1.25rem; /* 20px 转换为 rem */
+        opacity: 0; /* 初始透明度为0 */
+        transform: translateY(20px); /* 初始位置稍微向下 */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
+      }
+
+      /* 动画触发样式 */
+      .message_right.fade-in {
+        opacity: 1; /* 最终透明度为1 */
+        transform: translateY(0); /* 最终位置为原始位置 */
       }
 
       .message_right_avatar {
@@ -471,6 +494,15 @@
           height: auto;
           padding: 1.25rem; /* 20px 转换为 rem */
           margin-bottom: 1.25rem; /* 20px 转换为 rem */
+          opacity: 0; /* 初始透明度为0 */
+          transform: translateY(20px); /* 初始位置稍微向下 */
+          transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
+        }
+
+        /* 动画触发样式 */
+        .result_card.fade-in {
+          opacity: 1; /* 最终透明度为1 */
+          transform: translateY(0); /* 最终位置为原始位置 */
         }
 
         .result_image img {
@@ -700,78 +732,129 @@
         }
 
         // 2. 发送消息功能
+        // 发送消息功能
         function sendMessage(chatContainerId, buttonId, messageInputId) {
           var send_message = document.getElementById(chatContainerId);
           var domBtm = document.getElementById(buttonId);
           var message = document.getElementById(messageInputId);
 
-          // 定义一个函数，用于发送消息
-          function send() {
-            var str = message.value;
-            if (str.trim() === "") {
-              return; // 如果输入内容为空则不发送消息
-            }
-
-            var ans =
-              '<div class="message_right_item">' +
-              '<div class="message_right_content">' +
-              str +
-              "</div>" +
-              '<div class="message_right_avatar">' +
-              '<img src="./assets/images/avatar.png" alt="">' +
-              " </div>" +
-              "</div>";
-
-            var oLi = document.createElement("div");
-            oLi.setAttribute("class", "message_right");
-            oLi.innerHTML = ans;
-            send_message.append(oLi);
-            message.value = "";
-            send_message.scrollTop = send_message.scrollHeight;
-
-            var symptoms;
-            // 检索疾病名称并显示症状
-            setTimeout(function () {
-              symptoms = diseasesData[str].Symptom;
-
-              var replyMessage;
-
-              if (symptoms) {
-                replyMessage =
-                  "Thank you for your message, we are searching now!";
-              } else {
-                replyMessage =
-                  "No relevant symptoms found, please check the disease name.";
-              }
-
-              var replyLi = document.createElement("div");
-              replyLi.setAttribute("class", "message_left_item");
-              replyLi.innerHTML =
-                '<div class="message_left_item">' +
-                '<div class="message_left_content">' +
-                replyMessage +
-                "</div>" +
-                "</div>";
-
-              send_message.append(replyLi);
-              send_message.scrollTop = send_message.scrollHeight;
-            }, 1000); // 模拟延迟1秒后回复
-
-            setTimeout(function () {
-              // renderOtherDiseasesByKnownDiseaseSymptoms(symptoms);
-              renderSymptomsByDiseaseName(str, symptoms);
-            }, 1000);
-          }
-
           // 按钮点击事件
-          domBtm.addEventListener("click", send);
+          domBtm.addEventListener("click", function () {
+            send(send_message, message);
+          });
 
           // 输入框回车键事件
           message.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
-              send();
+              send(send_message, message);
             }
           });
+        }
+
+        // 发送消息函数
+        function send(send_message, message) {
+          var str = message.value;
+          if (str.trim() === "") {
+            alert("Send message empty");
+            return; // 如果输入内容为空则不发送消息
+          }
+
+          appendUserMessage(send_message, str);
+          message.value = "";
+          send_message.scrollTop = send_message.scrollHeight;
+
+          // 清空旧的疾病卡片
+          clearDiseaseCards();
+
+          // 延迟处理消息并渲染新的疾病卡片
+          setTimeout(() => processMessage(str, send_message), 1000);
+        }
+
+        // 追加用户消息到聊天框
+        function appendUserMessage(send_message, text) {
+          var ans =
+            '<div class="message_right_item">' +
+            '<div class="message_right_content">' +
+            text +
+            "</div>" +
+            '<div class="message_right_avatar">' +
+            '<img src="./assets/images/avatar.png" alt="">' +
+            " </div>" +
+            "</div>";
+
+          var oLi = document.createElement("div");
+          oLi.setAttribute("class", "message_right");
+          oLi.innerHTML = ans;
+          send_message.append(oLi);
+
+          // 使用setTimeout延迟添加动画类
+          setTimeout(() => {
+            oLi.classList.add("fade-in");
+          }, 10); // 这里的延迟确保元素已经插入DOM，然后再添加动画类
+        }
+
+        // 清空右侧旧的疾病卡片
+        function clearDiseaseCards() {
+          const resultContentContainer =
+            document.querySelector(".result_content");
+          resultContentContainer.innerHTML = ""; // 清空所有现有的卡片
+        }
+
+        // 处理用户输入的信息
+        function processMessage(text, send_message) {
+          var symptoms = getDiseaseSymptoms(text);
+
+          if (symptoms) {
+            var replyMessage = generateReplyMessage(symptoms);
+            appendReplyMessage(send_message, replyMessage);
+            send_message.scrollTop = send_message.scrollHeight;
+
+            setTimeout(() => renderSymptomsByDiseaseName(text, symptoms), 1000); // 渲染症状
+          } else {
+            var replyMessage = "No information available for this disease.";
+            appendReplyMessage(send_message, replyMessage);
+            send_message.scrollTop = send_message.scrollHeight;
+          }
+        }
+
+        // 根据疾病名称获取症状
+        function getDiseaseSymptoms(diseaseName) {
+          return diseasesData[diseaseName]
+            ? diseasesData[diseaseName].Symptom
+            : null;
+        }
+
+        // 生成回复消息
+        function generateReplyMessage(symptoms) {
+          if (symptoms) {
+            return "Thank you for your message, we are searching now!";
+          } else {
+            return "No relevant symptoms found, please check the disease name.";
+          }
+        }
+
+        // 追加回复消息到聊天框
+        function appendReplyMessage(send_message, text) {
+          var replyLi = document.createElement("div");
+          replyLi.setAttribute("class", "message_left_item new"); // 添加 `new` 类
+          replyLi.innerHTML =
+            '<div class="message_left_item">' +
+            '<div class="message_left_content">' +
+            text +
+            "</div>" +
+            "</div>";
+
+          send_message.append(replyLi);
+
+          // 使用 setTimeout 延迟添加动画类
+          setTimeout(() => {
+            replyLi.classList.add("fade-in");
+          }, 10); // 这里的延迟确保元素已经插入 DOM，然后再添加动画类
+
+          // 在动画结束后移除 `new` 类（可选，但推荐）
+          setTimeout(() => {
+            replyLi.classList.remove("new");
+          }, 500); // 根据过渡时间 (0.5s) 调整
         }
 
         // 3. 根据疾病名称创建卡片并渲染症状
@@ -786,7 +869,7 @@
             document.querySelector(".result_content");
 
           const resultCard = document.createElement("div");
-          resultCard.classList.add("result_card");
+          resultCard.classList.add("result_card", "new"); // 添加 `new` 类
 
           const resultHeader = document.createElement("div");
           resultHeader.classList.add("result_header");
@@ -867,8 +950,17 @@
           resultCard.appendChild(scrollArrow);
 
           resultContentContainer.appendChild(resultCard);
-        }
 
+          // 使用 setTimeout 延迟添加动画类
+          setTimeout(() => {
+            resultCard.classList.add("fade-in");
+          }, 10);
+
+          // 在动画结束后移除 `new` 类（可选，但推荐）
+          setTimeout(() => {
+            resultCard.classList.remove("new");
+          }, 500);
+        }
         // 5. 获取用户选择结果的函数
         function getUserSelections() {
           // 获取所有的症状项
@@ -1070,7 +1162,7 @@
           // 将 finalResults 保存到 localStorage
           localStorage.setItem("finalResults", JSON.stringify(finalResults));
           console.log(finalResults);
-          
+
           window.location.href = `pdf.html`;
         }
 
