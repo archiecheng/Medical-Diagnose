@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 13:31:01
+ * @LastEditTime: 2024-08-18 13:39:12
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -887,6 +887,7 @@
           // 获取所有的症状项
           const symptomItems = document.querySelectorAll(".simptom_item");
           const userSelections = {};
+          let allSelected = true;
 
           symptomItems.forEach((item) => {
             // 获取当前症状名称
@@ -902,11 +903,15 @@
 
             // 将结果存储在对象中，键是症状名称，值是用户的选择
             userSelections[symptomName] = selectedValue;
+
+            // 如果有未选择的选项，设置 allSelected 为 false
+            if (!selectedValue) {
+              allSelected = false;
+            }
           });
 
-          return userSelections;
+          return { userSelections, allSelected };
         }
-
         // 调用
         const results = getUserSelections();
         console.log(results);
@@ -1021,10 +1026,7 @@
           }
         }
 
-        // 初始化功能
-        sendMessage("message_list_id", "button", "send_message_content");
-        toggleSidebar("#toggleButton", "#sidebar");
-
+        // 滚动停顿功能
         // 滚动停顿功能
         let isScrolling = false;
         let lastScrollTime = 0;
@@ -1051,6 +1053,18 @@
           }
 
           lastScrollTime = currentTime;
+
+          // 获取当前卡片中的用户选择
+          const { userSelections, allSelected } = getUserSelections();
+
+          // 如果有未选择的选项，阻止滑动并弹出提示
+          if (!allSelected) {
+            event.preventDefault();
+            alert(
+              "Please select an option for each symptom before proceeding."
+            );
+            return;
+          }
 
           const resultCards = document.querySelectorAll(".result_card");
 
@@ -1084,10 +1098,6 @@
           // 滚动到目标卡片
           scrollToCard(targetCard);
 
-          // 获取当前卡片中的用户选择
-          const userSelections = getUserSelections();
-          console.log("User Selections:", userSelections);
-
           // 执行进一步的逻辑处理
           onCardSwipe(userSelections, diseasesData, symptomsData);
         }
@@ -1097,6 +1107,10 @@
           event.preventDefault();
           handleScroll(event);
         });
+
+        // 初始化功能
+        sendMessage("message_list_id", "button", "send_message_content");
+        toggleSidebar("#toggleButton", "#sidebar");
       });
     </script>
   </body>
