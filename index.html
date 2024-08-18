@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 11:43:03
+ * @LastEditTime: 2024-08-18 13:05:14
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -663,7 +663,7 @@
           $(".result_content").addClass("content_hidden");
         }
 
-        // 预加载JSON数据
+        // 预加载疾病JSON数据
         var diseasesData = [];
 
         fetch("assets/data/diseases.json")
@@ -676,7 +676,7 @@
             console.error("Error loading JSON:", error);
           });
 
-        // 预加载JSON数据
+        // 预加载症状JSON数据
         var symptomsData = [];
 
         fetch("assets/data/symptoms.json")
@@ -703,7 +703,9 @@
           var send_message = document.getElementById(chatContainerId);
           var domBtm = document.getElementById(buttonId);
           var message = document.getElementById(messageInputId);
-          domBtm.addEventListener("click", function () {
+
+          // 定义一个函数，用于发送消息
+          function send() {
             var str = message.value;
             if (str.trim() === "") {
               return; // 如果输入内容为空则不发送消息
@@ -758,17 +760,27 @@
               // renderOtherDiseasesByKnownDiseaseSymptoms(symptoms);
               renderSymptomsByDiseaseName(str, symptoms);
             }, 1000);
+          }
+
+          // 按钮点击事件
+          domBtm.addEventListener("click", send);
+
+          // 输入框回车键事件
+          message.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+              send();
+            }
           });
         }
 
         // 3. 根据疾病名称创建卡片并渲染症状
         function renderSymptomsByDiseaseName(diseaseName, symptoms) {
           // console.log(symptoms);
-          createResultCard(diseaseName, symptoms);
+          createResultCard(diseaseName, symptoms, false);
         }
 
         // 4. 创建卡片
-        function createResultCard(diseaseName, symptoms) {
+        function createResultCard(diseaseName, symptoms, isPredicted = false) {
           // 获取目标容器元素
           const resultContentContainer =
             document.querySelector(".result_content");
@@ -780,7 +792,13 @@
           // 创建 result_header 元素
           const resultHeader = document.createElement("div");
           resultHeader.classList.add("result_header");
-          resultHeader.innerHTML = `${diseaseName}`; // 或者可以设置为疾病名称
+
+          // 根据是否是预测卡片，设置标题内容
+          if (isPredicted) {
+            resultHeader.innerHTML = `Predicted Disease: ${diseaseName}`;
+          } else {
+            resultHeader.innerHTML = `${diseaseName}`; // 或者可以设置为疾病名称
+          }
           resultCard.appendChild(resultHeader);
 
           // 创建 result_main 元素
@@ -798,8 +816,7 @@
           const resultImage = document.createElement("div");
           resultImage.classList.add("result_image");
           const img = document.createElement("img");
-          // img.src = `./assets/images/${diseaseName.toLowerCase()}.jpg`;
-          img.src = `./assets/images/disease.png`;
+          img.src = `./assets/images/disease.png`; // 使用通用图片
           img.alt = diseaseName;
           resultImage.appendChild(img);
           resultMain.appendChild(resultImage);
@@ -817,9 +834,13 @@
           // 创建 symptom_intro 元素
           const symptomIntro = document.createElement("div");
           symptomIntro.classList.add("symptom_intro");
-          symptomIntro.textContent =
-            "For the following symptoms, please select YES|NO|MAYBE according to your personal wellbeing";
-          symptomInfo.appendChild(symptomIntro);
+
+          // 对于预测卡片，不需要提示用户选择选项
+          if (!isPredicted) {
+            symptomIntro.textContent =
+              "For the following symptoms, please select YES|NO|MAYBE according to your personal wellbeing";
+            symptomInfo.appendChild(symptomIntro);
+          }
 
           // 创建 symptom_list 元素
           const symptomListContainer = document.createElement("div");
@@ -831,8 +852,16 @@
             const symptomItem = document.createElement("div");
             symptomItem.classList.add("simptom_item");
             const symptomName =
-              symptom.SymptomName.replace(/\s+/g, "_") + "_" + index; // 假设 symptom 是一个字符串
-            symptomItem.innerHTML = `
+              symptom.SymptomName.replace(/\s+/g, "_") + "_" + index;
+
+            if (isPredicted) {
+              // 仅展示症状名称
+              symptomItem.innerHTML = `
+            <div class="symptom_name">${symptom.SymptomName}</div>
+        `;
+            } else {
+              // 展示症状名称并附带选择项
+              symptomItem.innerHTML = `
             <div class="symptom_name">${symptom.SymptomName}</div>
             <div class="symptom_status">
                 <input type="radio" id="${symptomName}_yes" name="${symptomName}" value="yes" />
@@ -845,17 +874,22 @@
                 <label for="${symptomName}_maybe"></label>
             </div>
         `;
+            }
             symptomListContainer.appendChild(symptomItem);
           });
 
-          // 创建 scroll_arrow 元素
-          const scrollArrow = document.createElement("div");
-          scrollArrow.classList.add("scroll_arrow");
-          resultCard.appendChild(scrollArrow);
+          // 创建 scroll_arrow 元素，仅在非预测卡片中添加
+          if (!isPredicted) {
+            const scrollArrow = document.createElement("div");
+            scrollArrow.classList.add("scroll_arrow");
+            resultCard.appendChild(scrollArrow);
+          }
 
           // 将 result_card 添加到目标容器中
           resultContentContainer.appendChild(resultCard);
 
+          // 滚动到新创建的卡片
+          // scrollToCard(resultCard);
           // 每次创建新卡片后，重新获取 resultCards
           const resultCards = document.querySelectorAll(".result_card");
         }
@@ -888,6 +922,116 @@
         // 调用
         const results = getUserSelections();
         console.log(results);
+
+        // 6. 症状匹配评分
+        function calculateDiseaseScores(userSelections, diseasesData) {
+          // 存储每个疾病的匹配分数
+          const diseaseScores = {};
+
+          // 遍历所有疾病
+          for (const [diseaseName, diseaseInfo] of Object.entries(
+            diseasesData
+          )) {
+            // 初始化当前疾病的匹配分数
+            let score = 0;
+            // 遍历当前疾病关联的所有症状
+            diseaseInfo.Symptom.forEach((symptomInfo) => {
+              const symptomName = symptomInfo.SymptomName;
+              const symptomPossibility = symptomInfo.Possibility;
+              // 根据症状名称从用户选择中获取用户的选择
+              const userChoice = userSelections[symptomName];
+
+              if (userChoice === "yes") {
+                score += symptomPossibility;
+              } else if (userChoice === "maybe") {
+                score += symptomPossibility * 0.5;
+              } else if (userChoice === "no") {
+                return; // no 意味着没有这个症状，就是 0
+              }
+            });
+            // 将当前疾病的最终得分存储到 diseaseScores 对象中
+            diseaseScores[diseaseName] = score;
+          }
+          // 返回包含所有疾病匹配分数的对象
+          return diseaseScores;
+        }
+
+        // 7. 关联症状到其他可能的疾病
+        function findRelatedDiseases(userSelections, symptomsData) {
+          // 存储相关疾病及其累积的可能性分数
+          const relatedDiseases = {};
+
+          // 遍历用户对症状的选择
+          for (const [symptomName, choice] of Object.entries(userSelections)) {
+            // 仅处理用户选择为 "yes" 或 "maybe" 的症状
+            if (choice === "yes" || choice === "maybe") {
+              // 从 symptomsData 中获取与当前症状相关的疾病信息
+              const symptomInfo = symptomsData[symptomName];
+
+              // 如果症状信息存在，则处理关联的疾病
+              if (symptomInfo) {
+                // 遍历当前症状关联的每个疾病
+                symptomInfo.diseases.forEach((disease) => {
+                  // 如果疾病还没有记录在 relatedDiseases 中，则初始化为 0
+                  if (!relatedDiseases[disease.DiseaseName]) {
+                    relatedDiseases[disease.DiseaseName] = 0;
+                  }
+                  // 根据用户选择累积该疾病的可能性分数
+                  // "yes" 累积全额的可能性分数，"maybe" 累积一半的可能性分数
+                  relatedDiseases[disease.DiseaseName] +=
+                    disease.possibility * (choice === "yes" ? 1 : 0.5);
+                });
+              }
+            }
+          }
+          // 返回包含所有相关疾病及其累积分数的对象
+          return relatedDiseases;
+        }
+
+        // 8. 疾病排序与筛选
+        function combineAndRankDiseases(diseaseScores, relatedDiseases) {
+          const combinedScores = { ...diseaseScores };
+
+          for (const [diseaseName, score] of Object.entries(relatedDiseases)) {
+            if (combinedScores[diseaseName]) {
+              combinedScores[diseaseName] += score;
+            } else {
+              combinedScores[diseaseName] = score;
+            }
+          }
+
+          return Object.entries(combinedScores)
+            .sort((a, b) => b[1] - a[1]) // 从高到低排序
+            .map(([diseaseName, score]) => ({ diseaseName, score }));
+        }
+
+        // 9. 迭代更新
+        function onCardSwipe(userSelections, diseasesData, symptomsData) {
+          const diseaseScores = calculateDiseaseScores(
+            userSelections,
+            diseasesData
+          );
+          console.log(diseaseScores);
+
+          const relatedDiseases = findRelatedDiseases(
+            userSelections,
+            symptomsData
+          );
+
+          const rankedDiseases = combineAndRankDiseases(
+            diseaseScores,
+            relatedDiseases
+          );
+
+          if (rankedDiseases.length > 0) {
+            const topDisease = rankedDiseases[0];
+            createResultCard(
+              topDisease.diseaseName,
+              diseasesData[topDisease.diseaseName].Symptom,
+              true // 传递 `true` 来表示这是一个预测卡片
+            );
+          }
+        }
 
         // 初始化功能
         sendMessage("message_list_id", "button", "send_message_content");
@@ -956,7 +1100,8 @@
           const userSelections = getUserSelections();
           console.log("User Selections:", userSelections);
 
-          // 这里可以执行进一步的逻辑处理，例如存储用户选择、展示其他信息等
+          // 执行进一步的逻辑处理
+          onCardSwipe(userSelections, diseasesData, symptomsData);
         }
 
         // 绑定滚动事件
