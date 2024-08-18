@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 14:39:36
+ * @LastEditTime: 2024-08-18 14:43:49
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -993,6 +993,7 @@
         // 9. 迭代更新
         let predictionCount = 0;
         let finalResults = [];
+
         function onCardSwipe(
           userSelections,
           diseasesData,
@@ -1003,7 +1004,6 @@
             userSelections,
             diseasesData
           );
-          // console.log(diseaseScores);
 
           const relatedDiseases = findRelatedDiseases(
             userSelections,
@@ -1017,30 +1017,45 @@
           );
 
           if (rankedDiseases.length > 0) {
-            const topDisease = rankedDiseases[0];
-            finalResults.push(topDisease);
+            // 找到第一个未在finalResults中出现的疾病
+            let topDisease;
+            for (const disease of rankedDiseases) {
+              const isAlreadyPredicted = finalResults.some(
+                (result) => result.diseaseName === disease.diseaseName
+              );
+              if (!isAlreadyPredicted) {
+                topDisease = disease;
+                break;
+              }
+            }
 
-            createResultCard(
-              topDisease.diseaseName,
-              diseasesData[topDisease.diseaseName].Symptom,
-              true
-            );
+            // 如果找到未重复的疾病
+            if (topDisease) {
+              finalResults.push(topDisease);
 
-            predictionCount++;
+              createResultCard(
+                topDisease.diseaseName,
+                diseasesData[topDisease.diseaseName].Symptom,
+                true
+              );
 
-            if (predictionCount === 5) {
-              generateFinalReport(finalResults);
+              predictionCount++;
+
+              if (predictionCount === 5) {
+                generateFinalReport(finalResults);
+              }
+            } else {
+              console.log("No new unique diseases to predict.");
             }
           }
         }
 
-        // 生成最终报告
+        // 10. 生成最终报告
         function generateFinalReport(finalResults) {
           console.log("Final Results: ", finalResults);
           window.location.href = "pdf.html";
         }
 
-        // 滚动停顿功能
         // 滚动停顿功能
         let isScrolling = false;
         let lastScrollTime = 0;
