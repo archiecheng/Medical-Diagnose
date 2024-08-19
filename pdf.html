@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-16 15:06:28
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-18 15:25:43
+ * @LastEditTime: 2024-08-19 09:36:44
  * @FilePath: \medical_diagnose\pdf.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,26 +13,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Medical Report</title>
     <!--pdf下载 -->
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="./assets/lib/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <!--jquery 方便后续使用jquery原生函数，可不引入-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/jquery/jquery.min.js"></script>
     <style>
       * {
         margin: 0px;
         padding: 0px;
       }
+      html,
       body {
+        width: 100%;
+        height: 100%;
+      }
+
+      #layout_wrapper {
+        width: 100%;
+        height: 100%;
         box-sizing: border-box;
         padding: 3.125rem;
       }
+
       .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header_name {
         font-family: "Leagie Spartan";
         font-size: 5rem;
         font-weight: bold;
         width: 100%;
         text-align: center;
         margin-bottom: 1.25rem;
+      }
+      .download_pdf {
+        width: 6.25rem;
+        height: 6.25rem;
+      }
+      .download_pdf img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
       }
       .profile {
         width: 100%;
@@ -93,42 +116,51 @@
     </style>
   </head>
   <body>
-    <div class="header">Medical Report</div>
-    <div class="main">
-      <div class="profile">
-        <table>
-          <tr>
-            <th colspan="2">Symptom Profile</th>
-          </tr>
-          <tr>
-            <td>These symptoms do occur</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Unsure if these symptoms occur</td>
-            <td></td>
-          </tr>
-        </table>
+    <!-- Begin page -->
+    <div id="layout_wrapper">
+      <div class="header">
+        <div class="header_name">Medical Report</div>
+
+        <div id="downloadPDF" class="download_pdf">
+          <img src="./assets/images/download.png" alt="save as pdf" />
+        </div>
       </div>
-      <div class="disease_match">
-        <div class="disease_match_header">Disease Matches(85%-100%)</div>
-        <div class="disease_match_main"></div>
-      </div>
-      <div class="disease_match">
-        <div class="disease_match_header">Disease Matches(70%-85%)</div>
-        <div class="disease_match_main"></div>
-      </div>
-      <div class="disease_match">
-        <div class="disease_match_header">Disease Matches(55%-70%)</div>
-        <div class="disease_match_main"></div>
-      </div>
-      <div class="disease_match">
-        <div class="disease_match_header">Disease Matches(40%-55%)</div>
-        <div class="disease_match_main"></div>
-      </div>
-      <div class="disease_match">
-        <div class="disease_match_header">Disease Matches(Below 40%)</div>
-        <div class="disease_match_main"></div>
+      <div class="main">
+        <div class="profile">
+          <table>
+            <tr>
+              <th colspan="2">Symptom Profile</th>
+            </tr>
+            <tr>
+              <td>These symptoms do occur</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Unsure if these symptoms occur</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="disease_match">
+          <div class="disease_match_header">Disease Matches(85%-100%)</div>
+          <div class="disease_match_main"></div>
+        </div>
+        <div class="disease_match">
+          <div class="disease_match_header">Disease Matches(70%-85%)</div>
+          <div class="disease_match_main"></div>
+        </div>
+        <div class="disease_match">
+          <div class="disease_match_header">Disease Matches(55%-70%)</div>
+          <div class="disease_match_main"></div>
+        </div>
+        <div class="disease_match">
+          <div class="disease_match_header">Disease Matches(40%-55%)</div>
+          <div class="disease_match_main"></div>
+        </div>
+        <div class="disease_match">
+          <div class="disease_match_header">Disease Matches(Below 40%)</div>
+          <div class="disease_match_main"></div>
+        </div>
       </div>
     </div>
     <script>
@@ -141,7 +173,46 @@
 
         // 渲染疾病匹配到 Disease Matches 区域
         renderDiseaseMatches(finalResults);
+
+        if (typeof window.jspdf !== "undefined") {
+          console.log("jsPDF loaded correctly");
+          window.jsPDF = window.jspdf.jsPDF; // 确保正确加载 jsPDF
+        } else {
+          console.error("jsPDF failed to load");
+        }
+
+        // 下载 PDF
+        $("#downloadPDF").click(function () {
+          console.log("开始下载PDF");
+          htmlToPdf();
+        });
       });
+
+      function htmlToPdf() {
+        // 获取HTML元素
+        const element = document.getElementById("layout_wrapper");
+        const options = {
+          dpi: 300, //dpi属性的值为192，表示图像的分辨率
+          scale: 3, //scale属性的值为2，表示图像的缩放比例。
+          windowWidth: element.scrollWidth, // 确保宽度覆盖整个页面
+          windowHeight: element.scrollHeight, // 增加高度覆盖页面内容及额外空间
+          backgroundColor: "#F1F6FE", //backgroundColor属性的值为"#F1F6FE"，表示图像的背景颜色。
+        };
+        // 将元素转换为canvas对象
+        html2canvas(element, options).then((canvas) => {
+          var contentWidth = canvas.width; //获取Canvas(上面元素id 'layout-wrapper')对象的宽度
+          var contentHeight = canvas.height; //获取Canvas(上面元素id 'layout-wrapper')对象的高度
+          // 创建jsPDF对象
+          window.jsPDF = window.jspdf.jsPDF; //导入jsPDF库，用于创建PDF文件
+          const pdf = new jsPDF("landscape", "px", [
+            contentWidth,
+            contentHeight,
+          ]); //创建一个新的PDF对象，参数包括页面格式（'1'表示A4纸张）、单位（'pt'）和页面尺寸（[contentWidth, contentHeight]）
+          var pageData = canvas.toDataURL("image/jpeg", 1.0); //将Canvas对象转换为JPEG格式的数据，并将其存储在pageData变量中。1.0表示图片质量
+          pdf.addImage(pageData, "JPEG", 0, 0, contentWidth, contentHeight); //将JPEG格式的图片添加到PDF文件中，图片的左上角坐标为(0, 0)，宽度为contentWidth，高度为contentHeight
+          pdf.save("report.pdf");
+        });
+      }
 
       function renderSymptomProfile(finalResults) {
         const occurSymptoms = [];
