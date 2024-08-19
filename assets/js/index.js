@@ -458,10 +458,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 10. 生成最终报告
   function generateFinalReport(finalResults) {
-    // 将 finalResults 保存到 localStorage
+    // finalResults 保存到 localStorage
     localStorage.setItem("finalResults", JSON.stringify(finalResults));
     console.log(finalResults);
-
+    // 页面跳转
     window.location.href = `pdf.html`;
   }
 

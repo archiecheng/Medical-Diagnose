@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 从 localStorage 中获取 finalResults 数据
+  // 获取 finalResults 数据
   const finalResults = JSON.parse(localStorage.getItem("finalResults"));
 
   // 渲染症状到 Symptom Profile 区域
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (typeof window.jspdf !== "undefined") {
     console.log("jsPDF loaded correctly");
-    window.jsPDF = window.jspdf.jsPDF; // 确保正确加载 jsPDF
+    window.jsPDF = window.jspdf.jsPDF;
   } else {
     console.error("jsPDF failed to load");
   }
