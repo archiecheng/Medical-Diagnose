@@ -244,11 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
       <input type="radio" id="${uniqueSymptomId}_yes" name="${uniqueSymptomId}" value="yes" />
       <label for="${uniqueSymptomId}_yes"></label>
 
-      <input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
-      <label for="${uniqueSymptomId}_no"></label>
-
       <input type="radio" id="${uniqueSymptomId}_maybe" name="${uniqueSymptomId}" value="maybe" />
       <label for="${uniqueSymptomId}_maybe"></label>
+
+      <input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
+      <label for="${uniqueSymptomId}_no"></label>
   </div>
 `;
       symptomListContainer.appendChild(symptomItem);
@@ -315,15 +315,16 @@ document.addEventListener("DOMContentLoaded", function () {
       diseaseInfo.Symptom.forEach((symptomInfo) => {
         const symptomName = symptomInfo.SymptomName;
         const symptomPossibility = symptomInfo.Possibility;
-        // 根据症状名称从用户选择中获取用户的选择
-        const userChoice = userSelections[symptomName];
-
-        if (userChoice === "yes") {
-          score += symptomPossibility;
-        } else if (userChoice === "maybe") {
-          score += symptomPossibility * 0.5;
-        } else if (userChoice === "no") {
-          return; // no 意味着没有这个症状，就是 0
+        if (userSelections[symptomName] != undefined) {
+          // 根据症状名称从用户选择中获取用户的选择
+          const userChoice = userSelections[symptomName];
+          if (userChoice === "yes") {
+            score += symptomPossibility;
+          } else if (userChoice === "maybe") {
+            score += symptomPossibility * 0.5;
+          } else if (userChoice === "no") {
+            return; // no 意味着没有这个症状，就是 0
+          }
         }
       });
       // 将当前疾病的最终得分存储到 diseaseScores 对象中
@@ -437,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
           score: topDisease.score,
           symptoms: symptoms,
         });
-
+        
         // 创建结果卡片
         createResultCard(
           topDisease.diseaseName,
@@ -493,6 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTime = currentTime;
 
     const { userSelections, allSelected } = getUserSelections();
+    // console.log(userSelections)
 
     if (!allSelected) {
       event.preventDefault();
