@@ -1,0 +1,95 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#layout_wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 3.125rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_name {
+  font-family: "Leagie Spartan";
+  font-size: 5rem;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.download_pdf {
+  width: 6.25rem;
+  height: 6.25rem;
+}
+.download_pdf img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.profile {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.profile table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.profile th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+.profile th {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.profile td:first-child {
+  width: 30%;
+  font-weight: bold;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.profile td {
+  color: black;
+  font-size: 1.5em;
+}
+
+.disease_match {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+.disease_match_header {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+}
+.disease_match_main {
+  width: 100%;
+  height: 12.5rem;
+  border: 0.0625rem solid black;
+  font-size: 1.5em;
+  box-sizing: border-box;
+  padding: 1.5625rem;
+  overflow-y: auto;
+}
