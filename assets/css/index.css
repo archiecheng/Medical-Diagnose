@@ -31,6 +31,7 @@ html {
   display: flex;
   position: relative;
   font-size: 1rem; /* 1rem 相当于根字体大小 */
+  overflow: hidden; /* 防止布局溢出 */
 }
 
 .side_bar {
@@ -118,92 +119,91 @@ html {
 }
 
 .selected_symptom_header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-sizing:border-box;
-  padding:.9375rem;
-  background-color:#e0e6ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.9375rem;
+  background-color: #e0e6ff;
 }
 
 .selected_symptom_header_l {
-  font-size:2rem;
-  font-weight:bold;
+  font-size: 2rem;
+  font-weight: bold;
   color: black;
 }
 
 .selected_symptom_header_r {
-  display:flex;
+  display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
 }
 
-.selected_symptom_header_r div{
-  font-size:1rem;
-  font-weight:bold;
+.selected_symptom_header_r div {
+  font-size: 1rem;
+  font-weight: bold;
   color: black;
-  display:block;
-  cursor:pointer;
+  display: block;
+  cursor: pointer;
 }
 
 .selected_symptom_main {
-  box-sizing:border-box;
-  padding:0 1.25rem 0 1.25rem;
+  box-sizing: border-box;
+  padding: 0 1.25rem 0 1.25rem;
 }
 
 .selected_symptom_list {
-  display:flex;
-  flex-direction:column;
-  box-sizing:border-box;
-  background-color:#e0e6ff;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: #e0e6ff;
   border-radius: 1.875rem;
-  box-sizing:border-box;
-  padding:1.875rem;
-  height:25rem;
-  overflow-y:auto;
-  margin-bottom:3rem;
+  box-sizing: border-box;
+  padding: 1.875rem;
+  height: 25rem;
+  overflow-y: auto;
+  margin-bottom: 3rem;
 }
 
 .preview {
-  width:100%;
+  width: 100%;
   height: 1rem;
-  display:flex;
-  justify-content:flex-start;
-  align-items:center;
-  cursor:pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
 }
 
 .preview img {
-  width:2.5rem;
-  height:2.5rem;
-  margin-right:.625rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.625rem;
 }
 
 .preview_text {
-  font-size:1.2rem;
+  font-size: 1.2rem;
   color: #eceeff;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .selected_symptom_item {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.25rem;
 }
 
 .selected_symptom_item div:first-child {
-  font-size:1.5rem;
-  color:black;
-  font-weight:bold;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
 }
 
-.selected_symptom_item div:last-child img{
-  width:1.5rem;
-  height:1.5rem;
-  cursor:pointer;
+.selected_symptom_item div:last-child img {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
-
 
 /* 右侧布局 */
 .chat_content {
@@ -211,7 +211,7 @@ html {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex: 3;
+  flex: 1.5;
 }
 
 .chat_content .message_container {
@@ -284,7 +284,7 @@ html {
   padding: 0.625rem 1.25rem; /* 10px 和 20px 转换为 rem */
   color: #888;
   font-family: Arial, sans-serif;
-  font-size: .8rem; /* 18px 转换为 rem */
+  font-size: 0.8rem; /* 18px 转换为 rem */
   width: fit-content;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1); /* 2px 和 10px 转换为 rem */
 }
@@ -443,6 +443,7 @@ html {
   padding: 1.5rem; /* 40px 转换为 rem */
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow-y: auto;
 }
 
 .result_header {
@@ -486,7 +487,8 @@ html {
 
 .result_image img {
   width: 100%;
-  height: 15.625rem; /* 250px 转换为 rem */
+  height: auto; /* 250px 转换为 rem */
+  max-height: 12.5rem; /* 200px 转换为 rem */
   border-radius: 1.875rem; /* 30px 转换为 rem */
 }
 
@@ -508,20 +510,22 @@ html {
 .symptom_list {
   display: flex;
   flex-direction: column;
-  height: 18.75rem;
-  overflow-y: auto;
+  height:calc(100vh - 37.5rem);
+  overflow-y: auto; /* 启用独立滚动 */
+  margin-bottom: 1rem;
 }
 
 .simptom_item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.625rem 0; /* 10px 转换为 rem */
 }
 
 .symptom_name {
   color: black;
   font-weight: bold;
-  font-size: 0.9375rem; /* 15px 转换为 rem */
+  font-size: 1rem; /* 15px 转换为 rem */
   width: 9.375rem;
 }
 
@@ -570,6 +574,10 @@ html {
 }
 
 @media (max-width: 768px) {
+  .layout {
+    flex-direction: column; /* 在小屏幕上从上到下布局 */
+  }
+
   .result_content {
     height: 100vh;
     scroll-snap-type: none;
@@ -579,7 +587,7 @@ html {
 
   .result_card {
     height: 100%;
-    padding: 1.25rem; /* 20px 转换为 rem */
+    padding: 1rem; /* 20px 转换为 rem */
     /* margin-bottom: 1.25rem; */
     opacity: 0; /* 初始透明度为0 */
     transform: translateY(20px); /* 初始位置稍微向下 */
@@ -593,20 +601,15 @@ html {
   }
 
   .result_image img {
-    height: auto;
-    max-height: 12.5rem; /* 200px 转换为 rem */
-    border-radius: 0.9375rem; /* 15px 转换为 rem */
+    max-height: 10rem; /* 在更小屏幕上进一步缩小图片高度 */
   }
 
   .symptom_name {
-    font-size: 1rem; /* 16px 转换为 rem */
+    font-size: 0.875rem; /* 更小的屏幕调整为较小的字体大小 */
   }
 
   .symptom_list {
-    /* flex-direction: column; */
-    height: auto; /* 允许症状列表根据内容调整高度 */
-    max-height: 50vh; /* 限制最大高度为视口的一半 */
-    overflow-y: auto; /* 启用滚动 */
+    max-height: 40vh; /* 在更小屏幕上进一步限制高度 */
   }
 
   .simptom_item {
