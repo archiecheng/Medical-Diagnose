@@ -316,8 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
     
-    console.log(symptomsArray);
-    if (!allSelected) {
+    if (allSelected) {
       renderSymptomProfileList(symptomsArray)
     }
 
