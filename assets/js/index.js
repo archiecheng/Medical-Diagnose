@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (isMobile) {
     $(".chat_content").addClass("content_show");
     $(".result_content").addClass("content_hidden");
+    $(".selected_symptom").addClass("content_hidden");
+    $(".preview").removeClass("content_hidden").addClass("content_show");
   }
 
   // 在页面加载后自动聚焦到输入框
@@ -77,13 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return; // 如果输入内容为空则不发送消息
     }
 
-    if (isMobile) {
-      $(".chat_content").removeClass("content_show").addClass("content_hidden");
-      $(".result_content")
-        .removeClass("content_hidden")
-        .addClass("content_show");
-    }
-
     appendUserMessage(send_message, str);
     message.value = "";
     send_message.scrollTop = send_message.scrollHeight;
@@ -148,11 +143,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 生成回复消息
   function generateReplyMessage(symptoms) {
+    var msg = '';
     if (symptoms) {
-      return "Thank you for your message, we are searching now!";
+      msg = "Thank you for your message, we are searching now!";
+      if (isMobile) {
+        $(".chat_content").removeClass("content_show").addClass("content_hidden");
+        $(".result_content").removeClass("content_hidden").addClass("content_show");
+      }
     } else {
-      return "No relevant symptoms found, please check the disease name.";
+      msg = "No relevant symptoms found, please check the disease name.";
     }
+    return msg;
   }
 
   // 追加回复消息到聊天框
@@ -471,7 +472,12 @@ document.addEventListener("DOMContentLoaded", function () {
         predictionCount++;
 
         if (predictionCount === 5) {
-          generateFinalReport(finalResults);
+          if (isMobile) {
+            $(".result_content").removeClass("content_show").addClass("content_hidden");
+            $(".selected_symptom").removeClass("content_hidden").addClass("content_show");;
+          } else {
+            generateFinalReport(finalResults);
+          }
         }
       } else {
         console.log("No new unique diseases to predict.");
@@ -684,6 +690,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     renderFilteredSymptoms('no')
   });
+
+  var preview_report = document.getElementById("preview_report");
+  preview_report.addEventListener("click", function() {
+    generateFinalReport(finalResults);
+  })
   // 初始化功能
   sendMessage("message_list_id", "button", "send_message_content");
   toggleSidebar("#toggleButton", "#sidebar");
