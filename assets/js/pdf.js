@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   // 获取 finalResults 数据
   const finalResults = JSON.parse(localStorage.getItem("finalResults"));
-
+  const uniqueSymptoms = JSON.parse(localStorage.getItem("uniqueSymptoms"));
   // 渲染症状到 Symptom Profile 区域
-  renderSymptomProfile(finalResults);
+  renderSymptomProfile(finalResults, uniqueSymptoms);
 
   // 渲染疾病匹配到 Disease Matches 区域
-  renderDiseaseMatches(finalResults);
+  renderDiseaseMatches(finalResults, uniqueSymptoms);
 
   if (typeof window.jspdf !== "undefined") {
     console.log("jsPDF loaded correctly");
@@ -45,16 +45,22 @@ function htmlToPdf() {
   });
 }
 
-function renderSymptomProfile(finalResults) {
-  const occurSymptoms = [];
-  const unsureSymptoms = [];
-
+// var count = 0;
+function renderSymptomProfile(finalResults, uniqueSymptoms) {
+  const occurSymptoms = new Set();
+  const unsureSymptoms = new Set();
   finalResults.forEach((result) => {
     result.symptoms.forEach((symptom) => {
-      if (symptom.choice === "yes") {
-        occurSymptoms.push(symptom.SymptomName);
-      } else if (symptom.choice === "maybe") {
-        unsureSymptoms.push(symptom.SymptomName);
+      // console.log(symptom);
+      for (let i = 0; i < uniqueSymptoms.length; i++) {
+        if (symptom.SymptomName == uniqueSymptoms[i].symptomName) {
+          // count++;
+          if (symptom.choice === "yes") {
+            occurSymptoms.add(symptom.SymptomName); // 使用 Set 来自动去重
+          } else if (symptom.choice === "maybe") {
+            unsureSymptoms.add(symptom.SymptomName); // 使用 Set 来自动去重
+          }
+        }
       }
     });
   });
@@ -62,13 +68,14 @@ function renderSymptomProfile(finalResults) {
   // 将症状列表渲染到对应的表格单元格中
   document.querySelector(
     ".profile tr:nth-child(2) td:nth-child(2)"
-  ).textContent = occurSymptoms.join(", ");
+  ).textContent = Array.from(occurSymptoms).join(", ");
   document.querySelector(
     ".profile tr:nth-child(3) td:nth-child(2)"
-  ).textContent = unsureSymptoms.join(", ");
+  ).textContent = Array.from(unsureSymptoms).join(", ");
+  // console.log(count)
 }
 
-function renderDiseaseMatches(finalResults) {
+function renderDiseaseMatches(finalResults, uniqueSymptoms) {
   // 按匹配度将 finalResults 分类
   const matches85_100 = [];
   const matches70_85 = [];

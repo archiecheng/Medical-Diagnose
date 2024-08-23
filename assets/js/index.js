@@ -571,7 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function generateFinalReport(finalResults) {
     // finalResults 保存到 localStorage
     localStorage.setItem("finalResults", JSON.stringify(finalResults));
-    console.log(finalResults);
+    localStorage.setItem("uniqueSymptoms", JSON.stringify(uniqueSymptoms));
     // 页面跳转
     window.location.href = `pdf.html`;
   }
