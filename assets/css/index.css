@@ -139,7 +139,7 @@ html {
 }
 
 .selected_symptom_header_r div{
-  font-size:1.25rem;
+  font-size:1rem;
   font-weight:bold;
   color: black;
   display:block;
@@ -159,7 +159,7 @@ html {
   border-radius: 1.875rem;
   box-sizing:border-box;
   padding:1.875rem;
-  height:37.5rem;
+  height:25rem;
   overflow-y:auto;
   margin-bottom:3rem;
 }
@@ -284,7 +284,7 @@ html {
   padding: 0.625rem 1.25rem; /* 10px 和 20px 转换为 rem */
   color: #888;
   font-family: Arial, sans-serif;
-  font-size: 1.125rem; /* 18px 转换为 rem */
+  font-size: .8rem; /* 18px 转换为 rem */
   width: fit-content;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1); /* 2px 和 10px 转换为 rem */
 }
