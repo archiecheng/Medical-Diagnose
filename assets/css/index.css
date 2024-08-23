@@ -126,16 +126,24 @@ html {
   background-color:#e0e6ff;
 }
 
-.selected_symptom_header span:first-child {
-  font-size:2.1875rem;
+.selected_symptom_header_l {
+  font-size:2rem;
   font-weight:bold;
   color: black;
 }
 
-.selected_symptom_header span:last-child {
+.selected_symptom_header_r {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.selected_symptom_header_r div{
   font-size:1.25rem;
   font-weight:bold;
   color: black;
+  display:block;
+  cursor:pointer;
 }
 
 .selected_symptom_main {

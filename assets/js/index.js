@@ -308,10 +308,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    let symptomsArray = Object.keys(userSelections).map(key => {
+      return {
+        symptomName: key,
+        symptomChoice: userSelections[key]
+      };
+    });
+    
+    renderSymptomProfileList(symptomsArray)
+    
+
     return { userSelections, allSelected };
   }
   // 调用
-  const results = getUserSelections();
+  // const results = getUserSelections();
   // console.log(results);
 
   // 6. 症状匹配评分
@@ -451,9 +461,6 @@ document.addEventListener("DOMContentLoaded", function () {
           symptoms: symptoms,
         });
 
-        // 渲染症状
-        renderSymptomProfileList(finalResults);
-
         // 创建结果卡片
         createResultCard(
           topDisease.diseaseName,
@@ -477,25 +484,21 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderSymptomProfileList(symptomResults) {
     const selectedSymptomListContainer = document.querySelector(
       ".selected_symptom_list"
-    );
+    ); 
     selectedSymptomListContainer.innerHTML = "";
-    symptomResults.forEach((result) => {
-      result.symptoms.forEach((symptom) => {
-        allSymptoms.push({
-          symptomName: symptom.SymptomName,
-          symptomChoice: symptom.choice,
-        });
+    for (let i = 0; i < symptomResults.length; i++) {
+      allSymptoms.push({
+        symptomName: symptomResults[i].symptomName,
+        symptomChoice: symptomResults[i].symptomChoice,
       });
-    });
+    }
+    
 
     // 去重
     uniqueSymptoms = allSymptoms.filter(
       (symptom, index, self) =>
         index === self.findIndex((s) => s.symptomName === symptom.symptomName)
     );
-
-    console.log(uniqueSymptoms);
-    
     // 渲染症状
     uniqueSymptoms.forEach((symptom, index) => {
       const symptomItem = createSymptomItem(symptom, index, uniqueSymptoms);
@@ -548,6 +551,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     symptoms.forEach((symptom, index) => {
       const symptomItem = createSymptomItem(symptom, index, symptoms);
+      selectedSymptomListContainer.appendChild(symptomItem);
+    });
+  }
+
+  // 根据 yes maybe no 筛选
+  function renderFilteredSymptoms(choice) {
+    const selectedSymptomListContainer = document.querySelector(".selected_symptom_list");
+    selectedSymptomListContainer.innerHTML = ""; // 清空当前内容
+    var filteredSymptoms = uniqueSymptoms.filter(symptom => symptom.symptomChoice === choice);
+    
+    filteredSymptoms.forEach((symptom, index) => {
+      const symptomItem = createSymptomItem(symptom, index);
       selectedSymptomListContainer.appendChild(symptomItem);
     });
   }
@@ -643,6 +658,31 @@ document.addEventListener("DOMContentLoaded", function () {
   resultContent.addEventListener("wheel", function (event) {
     event.preventDefault();
     handleScroll(event);
+  });
+
+  var selected_symptom_yes = document.getElementById("selected_symptom_yes");
+  selected_symptom_yes.addEventListener("click", function() {
+    if (uniqueSymptoms.length == 0) {
+      alert('the symptoms list is null, we cannot filter')
+      return;
+    }
+    renderFilteredSymptoms('yes')
+  });
+  var selected_symptom_maybe = document.getElementById("selected_symptom_maybe");
+  selected_symptom_maybe.addEventListener("click", function() {
+    if (uniqueSymptoms.length == 0) {
+      alert('the symptoms list is null, we cannot filter')
+      return;
+    }
+    renderFilteredSymptoms('maybe')
+  });
+  var selected_symptom_no = document.getElementById("selected_symptom_no");
+  selected_symptom_no.addEventListener("click", function() {
+    if (uniqueSymptoms.length == 0) {
+      alert('the symptoms list is null, we cannot filter')
+      return;
+    }
+    renderFilteredSymptoms('no')
   });
   // 初始化功能
   sendMessage("message_list_id", "button", "send_message_content");

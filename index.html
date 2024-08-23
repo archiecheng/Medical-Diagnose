@@ -2,7 +2,7 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-22 20:48:54
+ * @LastEditTime: 2024-08-22 21:33:28
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -57,7 +57,7 @@
             <div class="message_left clearfix">
               <div class="message_left_item">
                 <div class="message_left_content">
-                  Please enQter what you have been diagnosed with and any
+                  Please enter what you have been diagnosed with and any
                   additional information.
                   <a href="#"
                     >Click here for more information on how to use the app.</a
@@ -95,11 +95,15 @@
       </div>
       <div class="selected_symptom">
         <div class="selected_symptom_header">
-          <span
+          <div class="selected_symptom_header_l"
             >Symptom <br />
-            Profile</span
+            Profile</div
           >
-          <span>Yes | No | Maybe</span>
+          <div class="selected_symptom_header_r">
+            <div id="selected_symptom_yes">Yes</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
+            <div id="selected_symptom_maybe">No</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
+            <div id="selected_symptom_no">Maybe</div>
+          </div>
         </div>
         <div class="selected_symptom_main">
           <div class="message_left clearfix" style="margin-bottom: 1.875rem;">
