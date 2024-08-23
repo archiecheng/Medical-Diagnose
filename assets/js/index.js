@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // 2. 发送消息功能
-  // 发送消息功能
   function sendMessage(chatContainerId, buttonId, messageInputId) {
     var send_message = document.getElementById(chatContainerId);
     var domBtm = document.getElementById(buttonId);
@@ -143,12 +142,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 生成回复消息
   function generateReplyMessage(symptoms) {
-    var msg = '';
+    var msg = "";
     if (symptoms) {
       msg = "Thank you for your message, we are searching now!";
       if (isMobile) {
-        $(".chat_content").removeClass("content_show").addClass("content_hidden");
-        $(".result_content").removeClass("content_hidden").addClass("content_show");
+        $(".chat_content")
+          .removeClass("content_show")
+          .addClass("content_hidden");
+        $(".result_content")
+          .removeClass("content_hidden")
+          .addClass("content_show");
       }
     } else {
       msg = "No relevant symptoms found, please check the disease name.";
@@ -182,16 +185,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 3. 根据疾病名称创建卡片并渲染症状
   function renderSymptomsByDiseaseName(diseaseName, symptoms) {
-    // console.log(symptoms);
     createResultCard(diseaseName, symptoms);
   }
 
   // 4. 创建卡片
+  // 在创建卡片时给 symptom_list 绑定 scroll 和 mouseenter, mouseleave 事件
   function createResultCard(diseaseName, symptoms, isPredicted = false) {
     const resultContentContainer = document.querySelector(".result_content");
 
     const resultCard = document.createElement("div");
-    resultCard.classList.add("result_card", "new"); // 添加 `new` 类
+    resultCard.classList.add("result_card", "new");
 
     const resultHeader = document.createElement("div");
     resultHeader.classList.add("result_header");
@@ -252,17 +255,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const uniqueSymptomId = `${cardIdPrefix}_${symptomName}`;
 
       symptomItem.innerHTML = `
-  <div class="symptom_name">${symptom.SymptomName}</div>
-  <div class="symptom_status">
-      <input type="radio" id="${uniqueSymptomId}_yes" name="${uniqueSymptomId}" value="yes" />
-      <label for="${uniqueSymptomId}_yes"></label>
+<div class="symptom_name">${symptom.SymptomName}</div>
+<div class="symptom_status">
+    <input type="radio" id="${uniqueSymptomId}_yes" name="${uniqueSymptomId}" value="yes" />
+    <label for="${uniqueSymptomId}_yes"></label>
 
-      <input type="radio" id="${uniqueSymptomId}_maybe" name="${uniqueSymptomId}" value="maybe" />
-      <label for="${uniqueSymptomId}_maybe"></label>
+    <input type="radio" id="${uniqueSymptomId}_maybe" name="${uniqueSymptomId}" value="maybe" />
+    <label for="${uniqueSymptomId}_maybe"></label>
 
-      <input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
-      <label for="${uniqueSymptomId}_no"></label>
-  </div>
+    <input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
+    <label for="${uniqueSymptomId}_no"></label>
+</div>
 `;
       symptomListContainer.appendChild(symptomItem);
     });
@@ -272,6 +275,39 @@ document.addEventListener("DOMContentLoaded", function () {
     resultCard.appendChild(scrollArrow);
 
     resultContentContainer.appendChild(resultCard);
+
+    // 禁止页面滚动的函数
+    function preventScroll(e) {
+      e.stopPropagation();
+    }
+
+    // 监听鼠标进入症状列表区域事件
+    symptomListContainer.addEventListener("mouseenter", function (e) {
+      // 如果症状列表可以滚动，则阻止事件冒泡
+      if (
+        symptomListContainer.scrollHeight > symptomListContainer.clientHeight
+      ) {
+        document.addEventListener("wheel", preventScroll, { passive: false });
+      }
+    });
+
+    // 监听鼠标离开症状列表区域事件
+    symptomListContainer.addEventListener("mouseleave", function () {
+      document.removeEventListener("wheel", preventScroll);
+    });
+
+    // 在症状列表内滚动时，阻止默认事件，防止滚动整个页面
+    symptomListContainer.addEventListener(
+      "wheel",
+      function (e) {
+        if (
+          symptomListContainer.scrollHeight > symptomListContainer.clientHeight
+        ) {
+          e.stopPropagation(); // 阻止事件冒泡
+        }
+      },
+      { passive: false }
+    );
 
     // 使用 setTimeout 延迟添加动画类
     setTimeout(() => {
@@ -309,15 +345,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    let symptomsArray = Object.keys(userSelections).map(key => {
+    let symptomsArray = Object.keys(userSelections).map((key) => {
       return {
         symptomName: key,
-        symptomChoice: userSelections[key]
+        symptomChoice: userSelections[key],
       };
     });
-    
+
     if (allSelected) {
-      renderSymptomProfileList(symptomsArray)
+      renderSymptomProfileList(symptomsArray);
     }
 
     return { userSelections, allSelected };
@@ -474,8 +510,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (predictionCount === 5) {
           if (isMobile) {
-            $(".result_content").removeClass("content_show").addClass("content_hidden");
-            $(".selected_symptom").removeClass("content_hidden").addClass("content_show");;
+            $(".result_content")
+              .removeClass("content_show")
+              .addClass("content_hidden");
+            $(".selected_symptom")
+              .removeClass("content_hidden")
+              .addClass("content_show");
           } else {
             generateFinalReport(finalResults);
           }
@@ -491,7 +531,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderSymptomProfileList(symptomResults) {
     const selectedSymptomListContainer = document.querySelector(
       ".selected_symptom_list"
-    ); 
+    );
     selectedSymptomListContainer.innerHTML = "";
     for (let i = 0; i < symptomResults.length; i++) {
       allSymptoms.push({
@@ -499,7 +539,6 @@ document.addEventListener("DOMContentLoaded", function () {
         symptomChoice: symptomResults[i].symptomChoice,
       });
     }
-    
 
     // 去重
     uniqueSymptoms = allSymptoms.filter(
@@ -564,10 +603,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 根据 yes maybe no 筛选
   function renderFilteredSymptoms(choice) {
-    const selectedSymptomListContainer = document.querySelector(".selected_symptom_list");
+    const selectedSymptomListContainer = document.querySelector(
+      ".selected_symptom_list"
+    );
     selectedSymptomListContainer.innerHTML = ""; // 清空当前内容
-    var filteredSymptoms = uniqueSymptoms.filter(symptom => symptom.symptomChoice === choice);
-    
+    var filteredSymptoms = uniqueSymptoms.filter(
+      (symptom) => symptom.symptomChoice === choice
+    );
+
     filteredSymptoms.forEach((symptom, index) => {
       const symptomItem = createSymptomItem(symptom, index);
       selectedSymptomListContainer.appendChild(symptomItem);
@@ -611,7 +654,6 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTime = currentTime;
 
     const { userSelections, allSelected } = getUserSelections();
-    // console.log(userSelections)
 
     if (!allSelected) {
       event.preventDefault();
@@ -668,34 +710,36 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   var selected_symptom_yes = document.getElementById("selected_symptom_yes");
-  selected_symptom_yes.addEventListener("click", function() {
+  selected_symptom_yes.addEventListener("click", function () {
     if (uniqueSymptoms.length == 0) {
-      alert('the symptoms list is null, we cannot filter')
+      alert("the symptoms list is null, we cannot filter");
       return;
     }
-    renderFilteredSymptoms('yes')
+    renderFilteredSymptoms("yes");
   });
-  var selected_symptom_maybe = document.getElementById("selected_symptom_maybe");
-  selected_symptom_maybe.addEventListener("click", function() {
+  var selected_symptom_maybe = document.getElementById(
+    "selected_symptom_maybe"
+  );
+  selected_symptom_maybe.addEventListener("click", function () {
     if (uniqueSymptoms.length == 0) {
-      alert('the symptoms list is null, we cannot filter')
+      alert("the symptoms list is null, we cannot filter");
       return;
     }
-    renderFilteredSymptoms('maybe')
+    renderFilteredSymptoms("maybe");
   });
   var selected_symptom_no = document.getElementById("selected_symptom_no");
-  selected_symptom_no.addEventListener("click", function() {
+  selected_symptom_no.addEventListener("click", function () {
     if (uniqueSymptoms.length == 0) {
-      alert('the symptoms list is null, we cannot filter')
+      alert("the symptoms list is null, we cannot filter");
       return;
     }
-    renderFilteredSymptoms('no')
+    renderFilteredSymptoms("no");
   });
 
   var preview_report = document.getElementById("preview_report");
-  preview_report.addEventListener("click", function() {
+  preview_report.addEventListener("click", function () {
     generateFinalReport(finalResults);
-  })
+  });
   // 初始化功能
   sendMessage("message_list_id", "button", "send_message_content");
   toggleSidebar("#toggleButton", "#sidebar");
