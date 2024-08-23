@@ -316,8 +316,10 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
     
-    renderSymptomProfileList(symptomsArray)
-    
+    console.log(symptomsArray);
+    if (!allSelected) {
+      renderSymptomProfileList(symptomsArray)
+    }
 
     return { userSelections, allSelected };
   }
