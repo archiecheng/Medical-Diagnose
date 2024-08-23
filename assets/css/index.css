@@ -171,6 +171,7 @@ html {
 .selected_symptom_item div:last-child img{
   width:1.5rem;
   height:1.5rem;
+  cursor:pointer;
 }
 
 
@@ -410,7 +411,6 @@ html {
   box-sizing: border-box;
   scroll-snap-align: start;
   padding: 1.5rem; /* 40px 转换为 rem */
-  opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }

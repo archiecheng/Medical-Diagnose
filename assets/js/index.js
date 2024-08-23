@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
     isMobile = true;
   }
-  
+
   if (isMobile) {
     $(".chat_content").addClass("content_show");
     $(".result_content").addClass("content_hidden");
@@ -76,10 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Send message empty");
       return; // 如果输入内容为空则不发送消息
     }
-    
+
     if (isMobile) {
       $(".chat_content").removeClass("content_show").addClass("content_hidden");
-      $(".result_content").removeClass("content_hidden").addClass("content_show");
+      $(".result_content")
+        .removeClass("content_hidden")
+        .addClass("content_show");
     }
 
     appendUserMessage(send_message, str);
@@ -448,7 +450,10 @@ document.addEventListener("DOMContentLoaded", function () {
           score: topDisease.score,
           symptoms: symptoms,
         });
-        
+
+        // 渲染症状
+        renderSymptomProfileList(finalResults);
+
         // 创建结果卡片
         createResultCard(
           topDisease.diseaseName,
@@ -465,6 +470,86 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("No new unique diseases to predict.");
       }
     }
+  }
+
+  let allSymptoms = [];
+  let uniqueSymptoms = [];
+  function renderSymptomProfileList(symptomResults) {
+    const selectedSymptomListContainer = document.querySelector(
+      ".selected_symptom_list"
+    );
+    selectedSymptomListContainer.innerHTML = "";
+    symptomResults.forEach((result) => {
+      result.symptoms.forEach((symptom) => {
+        allSymptoms.push({
+          symptomName: symptom.SymptomName,
+          symptomChoice: symptom.choice,
+        });
+      });
+    });
+
+    // 去重
+    uniqueSymptoms = allSymptoms.filter(
+      (symptom, index, self) =>
+        index === self.findIndex((s) => s.symptomName === symptom.symptomName)
+    );
+
+    console.log(uniqueSymptoms);
+    
+    // 渲染症状
+    uniqueSymptoms.forEach((symptom, index) => {
+      const symptomItem = createSymptomItem(symptom, index, uniqueSymptoms);
+      selectedSymptomListContainer.appendChild(symptomItem);
+    });
+  }
+
+  // 创建症状项函数
+  function createSymptomItem(symptom, index, uniqueSymptoms) {
+    // 创建症状项
+    const symptomItem = document.createElement("div");
+    symptomItem.classList.add("selected_symptom_item");
+
+    // 创建症状名称
+    const symptomName = document.createElement("div");
+    symptomName.textContent = symptom.symptomName;
+
+    // 创建删除按钮
+    const removeBtn = document.createElement("div");
+    const removeImg = document.createElement("img");
+    removeImg.src = "./assets/images/remove.png";
+    removeImg.alt = "Remove Symptom";
+
+    // 为删除按钮添加点击事件
+    removeImg.addEventListener("click", () => {
+      removeSymptom(index, uniqueSymptoms);
+    });
+
+    removeBtn.appendChild(removeImg);
+
+    // 将症状名称和删除按钮添加到症状项中
+    symptomItem.appendChild(symptomName);
+    symptomItem.appendChild(removeBtn);
+
+    return symptomItem;
+  }
+
+  // 移除症状函数
+  function removeSymptom(index, uniqueSymptoms) {
+    uniqueSymptoms.splice(index, 1); // 从症状数组中移除指定的症状
+    renderSymptoms(uniqueSymptoms); // 重新渲染症状列表
+  }
+
+  // 渲染症状函数
+  function renderSymptoms(symptoms) {
+    const selectedSymptomListContainer = document.querySelector(
+      ".selected_symptom_list"
+    );
+    selectedSymptomListContainer.innerHTML = ""; // 清空当前内容
+
+    symptoms.forEach((symptom, index) => {
+      const symptomItem = createSymptomItem(symptom, index, symptoms);
+      selectedSymptomListContainer.appendChild(symptomItem);
+    });
   }
 
   // 10. 生成最终报告
