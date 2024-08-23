@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+  var isMobile = false;
   // 检测网页是否在移动端打开
   if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+    isMobile = true;
+  }
+  
+  if (isMobile) {
     $(".chat_content").addClass("content_show");
     $(".result_content").addClass("content_hidden");
   }
@@ -28,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("assets/data/symptoms.json")
     .then((response) => response.json())
     .then((data) => {
-      // 在这里处理你的 JSON 数据
+      // 处理 JSON 数据
       symptomsData = data;
     })
     .catch((error) => {
@@ -70,6 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (str.trim() === "") {
       alert("Send message empty");
       return; // 如果输入内容为空则不发送消息
+    }
+    
+    if (isMobile) {
+      $(".chat_content").removeClass("content_show").addClass("content_hidden");
+      $(".result_content").removeClass("content_hidden").addClass("content_show");
     }
 
     appendUserMessage(send_message, str);

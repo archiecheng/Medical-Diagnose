@@ -313,12 +313,14 @@ html {
   background-image: linear-gradient(to right, rgba(99, 106, 154, 0.8), #d7d8ff);
   flex-grow: 1.5;
   background-size: cover;
+  width:100%;
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   -ms-overflow-style: none; /* IE 和 Edge 隐藏滚动条 */
   scrollbar-width: none; /* Firefox 隐藏滚动条 */
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* 适用于移动端的滚动惯性效果 */
 }
 
 .result_content::-webkit-scrollbar {
@@ -327,7 +329,7 @@ html {
 
 .result_card {
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* 设置卡片高度为视口高度 */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -335,6 +337,9 @@ html {
   box-sizing: border-box;
   scroll-snap-align: start;
   padding: 1.5rem; /* 40px 转换为 rem */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .result_header {
@@ -463,16 +468,16 @@ html {
 
 @media (max-width: 768px) {
   .result_content {
-    height: auto;
+    height: 100vh;
     scroll-snap-type: none;
     overflow-y: auto;
-    padding: 0.625rem; /* 10px 转换为 rem */
+    /* padding: 0.625rem; 10px 转换为 rem */
   }
 
   .result_card {
-    height: auto;
+    height: 100%;
     padding: 1.25rem; /* 20px 转换为 rem */
-    margin-bottom: 1.25rem; /* 20px 转换为 rem */
+    /* margin-bottom: 1.25rem; */
     opacity: 0; /* 初始透明度为0 */
     transform: translateY(20px); /* 初始位置稍微向下 */
     transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
@@ -495,7 +500,10 @@ html {
   }
 
   .symptom_list {
-    flex-direction: column;
+    /* flex-direction: column; */
+    height: auto; /* 允许症状列表根据内容调整高度 */
+    max-height: 50vh; /* 限制最大高度为视口的一半 */
+    overflow-y: auto; /* 启用滚动 */
   }
 
   .simptom_item {
