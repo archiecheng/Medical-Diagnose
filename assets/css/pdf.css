@@ -22,17 +22,31 @@ body {
   flex-wrap: wrap;
   margin-bottom: 1.25rem;
 }
+
+.logo {
+  width: 8rem;
+  height: 6rem;
+  margin-left: auto;
+  margin-right: 1rem;
+  flex-shrink: 0; /* 确保图标不会被压缩 */
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
 .header_name {
   font-family: "League Spartan", sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   width: auto;
   text-align: center;
   flex: 1;
 }
 .download_pdf {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   margin-left: auto;
   margin-right: 1rem;
   flex-shrink: 0; /* 确保图标不会被压缩 */
@@ -115,7 +129,12 @@ td {
   }
 
   .header_name {
-    font-size: 2rem; /* 减小标题字体大小 */
+    font-size: 1rem; /* 减小标题字体大小 */
+  }
+
+  .logo {
+    width: 4rem;
+    height: 3rem;
   }
 
   .download_pdf {
