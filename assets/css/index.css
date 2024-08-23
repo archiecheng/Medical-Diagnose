@@ -31,7 +31,7 @@ html {
   display: flex;
   position: relative;
   font-size: 1rem; /* 1rem 相当于根字体大小 */
-  overflow: hidden; /* 防止布局溢出 */
+  /* overflow: hidden; */
 }
 
 .side_bar {
@@ -574,9 +574,6 @@ html {
 }
 
 @media (max-width: 768px) {
-  .layout {
-    flex-direction: column; /* 在小屏幕上从上到下布局 */
-  }
 
   .result_content {
     height: 100vh;
