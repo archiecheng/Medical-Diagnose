@@ -151,6 +151,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  flex:2;
 }
 
 .chat_content .message_container {
@@ -361,6 +362,7 @@ body {
   scrollbar-width: none; /* Firefox 隐藏滚动条 */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; /* 适用于移动端的滚动惯性效果 */
+  flex:2;
 }
 
 .selected_symptom_header {
@@ -409,7 +411,7 @@ body {
   padding: 1.875rem;
   height: 25rem;
   overflow-y: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .preview {
@@ -462,6 +464,7 @@ body {
   scrollbar-width: none; /* Firefox 隐藏滚动条 */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; /* 适用于移动端的滚动惯性效果 */
+  flex:2;
 }
 
 .result_content::-webkit-scrollbar {
