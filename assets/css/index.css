@@ -560,7 +560,7 @@ body {
 .symptom_list {
   display: flex;
   flex-direction: column;
-  height: 16.25rem;
+  height: 12rem;
   overflow-y: auto; /* 启用独立滚动 */
   margin-bottom: 1rem;
 }
