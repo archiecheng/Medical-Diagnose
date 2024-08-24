@@ -195,6 +195,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultCard = document.createElement("div");
     resultCard.classList.add("result_card", "new");
 
+    if (isMobile) {
+      resultCard.style.height = "100%";
+    } else {
+      resultCard.style.height = "100vh";
+    }
+
     const resultHeader = document.createElement("div");
     resultHeader.classList.add("result_header");
 
