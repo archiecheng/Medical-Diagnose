@@ -691,7 +691,7 @@ function processScroll(event) {
 
   if (!allSelected) {
     event.preventDefault();
-    alert("请为每个症状选择一个选项，然后再继续。");
+    alert("Please select an option for each symptom before continuing.");
     return;
   }
 
