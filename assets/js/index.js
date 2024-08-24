@@ -275,59 +275,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resultContentContainer.appendChild(resultCard);
 
-    // 禁止页面滚动的函数
-    function preventScroll(e) {
-      e.stopPropagation();
-    }
-
-    // 监听鼠标进入症状列表区域事件
-    symptomListContainer.addEventListener("mouseenter", function (e) {
-      // 如果症状列表可以滚动，则阻止事件冒泡
-      if (
-        symptomListContainer.scrollHeight > symptomListContainer.clientHeight
-      ) {
-        document.addEventListener("wheel", preventScroll, { passive: false });
-      }
-    });
-
-    // 监听鼠标离开症状列表区域事件
-    symptomListContainer.addEventListener("mouseleave", function () {
-      document.removeEventListener("wheel", preventScroll);
-    });
-
-    // 在症状列表内滚动时，阻止默认事件，防止滚动整个页面
-    symptomListContainer.addEventListener(
-      "wheel",
-      function (e) {
-        if (
-          symptomListContainer.scrollHeight > symptomListContainer.clientHeight
-        ) {
-          e.stopPropagation(); // 阻止事件冒泡
-        }
-      },
-      { passive: false }
-    );
-
-    // 处理移动设备上的触摸事件
+    // 简化触摸事件的处理，以避免干扰
     symptomListContainer.addEventListener("touchstart", function (e) {
-      const initialY = e.touches[0].clientY;
-
-      symptomListContainer.addEventListener("touchmove", function (e) {
-        const currentY = e.touches[0].clientY;
-        const deltaY = currentY - initialY;
-
-        if (
-          symptomListContainer.scrollHeight >
-            symptomListContainer.clientHeight &&
-          deltaY !== 0
-        ) {
-          e.stopPropagation(); // 阻止事件冒泡
-        }
-      });
+      e.stopPropagation();
     });
 
-    symptomListContainer.addEventListener("touchend", function () {
-      symptomListContainer.removeEventListener("touchmove", null);
+    symptomListContainer.addEventListener("touchmove", function (e) {
+      e.stopPropagation();
     });
 
     // 使用 setTimeout 延迟添加动画类
@@ -340,7 +294,9 @@ document.addEventListener("DOMContentLoaded", function () {
       resultCard.classList.remove("new");
     }, 500);
   }
+
   // 5. 获取用户选择结果的函数
+
   function getUserSelections() {
     // 获取所有的症状项
     const symptomItems = document.querySelectorAll(".simptom_item");
@@ -738,11 +694,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function processScroll(event) {
-    if (isScrolling) {
-      return;
-    }
+  function handleTouchScroll(event) {
+    if (isScrolling) return;
 
+    const touchEndY = event.changedTouches[0].clientY;
+    const touchStartY = event.target.dataset.touchStartY;
+
+    if (!touchStartY) return;
+
+    const scrollDirection = touchEndY > touchStartY ? "up" : "down";
     const currentTime = new Date().getTime();
     if (currentTime - lastScrollTime < 1000) {
       event.preventDefault();
@@ -754,14 +714,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const { userSelections, allSelected } = getUserSelections();
 
     if (!allSelected) {
-      event.preventDefault();
-      alert("请为每个症状选择一个选项，然后再继续。");
-      return;
+      return; // 不再弹出错误提示，阻止滑动
     }
 
     const resultCards = document.querySelectorAll(".result_card");
-
-    let scrollDirection = event.deltaY < 0 ? "up" : "down";
 
     let closestCard = null;
     let minDistance = Infinity;
@@ -800,6 +756,14 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollToCard(closestCard);
     }
   }
+
+  resultContent.addEventListener("touchstart", function (event) {
+    event.target.dataset.touchStartY = event.touches[0].clientY;
+  });
+
+  resultContent.addEventListener("touchend", function (event) {
+    handleTouchScroll(event);
+  });
 
   // 绑定滚动事件
   resultContent.addEventListener("wheel", function (event) {
