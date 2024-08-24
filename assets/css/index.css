@@ -145,7 +145,7 @@ body {
 
 /* 聊天框布局 */
 .chat_content {
-  background: url("../images/background.png") no-repeat center center;
+  background: url("../images/newbackground.png") no-repeat center center;
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;
