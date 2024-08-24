@@ -5,10 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (isMobile) {
-    $(".chat_content").addClass("content_show");
     $(".result_content").addClass("content_hidden");
     $(".selected_symptom").addClass("content_hidden");
-    $(".preview").removeClass("content_hidden").addClass("content_show");
+    $(".preview").removeClass("content_hidden");
   }
 
   const messageInput = document.getElementById("send_message_content");
