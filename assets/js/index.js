@@ -714,7 +714,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const { userSelections, allSelected } = getUserSelections();
 
     if (!allSelected) {
-      return; // 不再弹出错误提示，阻止滑动
+      event.preventDefault();
+      alert("请为每个症状选择一个选项，然后再继续。");
+      return;
     }
 
     const resultCards = document.querySelectorAll(".result_card");
@@ -754,6 +756,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (newResultCards.length > resultCards.length) {
       closestCard = newResultCards[newResultCards.length - 1];
       scrollToCard(closestCard);
+    }
+
+    // 在滑动处理结束后，检查是否已经滑动到第五张卡片并且所有症状已选择
+    if (predictionCount === 5 && allSelected) {
+      generateFinalReport(finalResults);
     }
   }
 
