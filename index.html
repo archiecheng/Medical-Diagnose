@@ -2,16 +2,16 @@
  * @Author: archiecheng archiechengice@outlook.com
  * @Date: 2024-08-02 20:16:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-23 15:30:24
+ * @LastEditTime: 2024-08-24 00:29:18
  * @FilePath: \medical_diagnose\index.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: 这是默认设置,请设置customMade, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
 <html>
   <head>
     <title>Medical Diagnose</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="./assets/css/index.css" />
     <script src="./assets/jquery/jquery.min.js"></script>
     <script src="./assets/js/index.js"></script>
@@ -28,21 +28,6 @@
           <li class="nav-item">
             <a href="#">Home</a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="#">Symptom Profile</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Reports</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Settings</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Contact</a>
-          </li> -->
         </ul>
       </div>
       <div class="chat_content">
@@ -57,7 +42,7 @@
           </div>
           <div class="message_list" id="message_list_id">
             <!-- 左边 -->
-            <div class="message_left clearfix">
+            <div class="message_left">
               <div class="message_left_item">
                 <div class="message_left_content">
                   Please enter what you have been diagnosed with and any
@@ -68,22 +53,16 @@
                 </div>
               </div>
             </div>
-            <div class="message_left clearfix">
+            <div class="message_left">
               <div class="message_left_item">
                 <div class="message_left_content">
                   <!-- Additional warnings and disclaimers -->
-                  Please a disease name
+                  Please enter a disease name
                 </div>
               </div>
             </div>
             <!--右边 -->
             <div class="message_right">
-              <!-- <div class="message_right_item">
-                <div class="message_right_content">Disease Name</div>
-                <div class="message_right_avatar">
-                  <img src="./assets/images/avatar.png" alt="" />
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -98,14 +77,11 @@
       </div>
       <div class="selected_symptom">
         <div class="selected_symptom_header">
-          <div class="selected_symptom_header_l"
-            >Symptom <br />
-            Profile</div
-          >
+          <div class="selected_symptom_header_l">Symptom <br />Profile</div>
           <div class="selected_symptom_header_r">
             <div id="selected_symptom_yes">Yes</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
-            <div id="selected_symptom_maybe">No</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
-            <div id="selected_symptom_no">Maybe</div>
+            <div id="selected_symptom_no">No</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
+            <div id="selected_symptom_maybe">Maybe</div>
           </div>
         </div>
         <div class="selected_symptom_main">

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var isMobile = false;
+  // 检测网页是否在移动端打开
   if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
     isMobile = true;
   }
@@ -11,10 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $(".preview").removeClass("content_hidden").addClass("content_show");
   }
 
+  // 在页面加载后自动聚焦到输入框
   const messageInput = document.getElementById("send_message_content");
   messageInput.focus();
 
+  // 预加载疾病JSON数据
   var diseasesData = [];
+
   fetch("assets/data/diseases.json")
     .then((response) => response.json())
     .then((data) => {
@@ -24,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading JSON:", error);
     });
 
+  // 预加载症状JSON数据
   var symptomsData = [];
+
   fetch("assets/data/symptoms.json")
     .then((response) => response.json())
     .then((data) => {
@@ -34,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading JSON:", error);
     });
 
+  // 1. 侧边栏切换功能
   function toggleSidebar(toggleButtonSelector, sidebarSelector) {
     $(document).ready(function () {
       $(toggleButtonSelector).click(function () {
@@ -42,15 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // 2. 发送消息功能
   function sendMessage(chatContainerId, buttonId, messageInputId) {
     var send_message = document.getElementById(chatContainerId);
     var domBtm = document.getElementById(buttonId);
     var message = document.getElementById(messageInputId);
 
+    // 按钮点击事件
     domBtm.addEventListener("click", function () {
       send(send_message, message);
     });
 
+    // 输入框回车键事件
     message.addEventListener("keypress", function (event) {
       if (event.key === "Enter") {
         send(send_message, message);
@@ -58,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // 发送消息函数
   function send(send_message, message) {
     var str = message.value;
     if (str.trim() === "") {
@@ -74,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => processMessage(str, send_message), 1000);
   }
 
+  // 追加用户消息到聊天框
   function appendUserMessage(send_message, text) {
     var ans =
       '<div class="message_right_item">' +
@@ -95,11 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 10);
   }
 
+  // 清空右侧旧的疾病卡片
   function clearDiseaseCards() {
     const resultContentContainer = document.querySelector(".result_content");
     resultContentContainer.innerHTML = "";
   }
 
+  // 处理用户输入的信息
   function processMessage(text, send_message) {
     var symptoms = getDiseaseSymptoms(text);
 
@@ -116,10 +130,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // 根据疾病名称获取症状
   function getDiseaseSymptoms(diseaseName) {
     return diseasesData[diseaseName] ? diseasesData[diseaseName].Symptom : null;
   }
 
+  // 生成回复消息
   function generateReplyMessage(symptoms) {
     var msg = "";
     if (symptoms) {
@@ -138,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return msg;
   }
 
+  // 追加回复消息到聊天框
   function appendReplyMessage(send_message, text) {
     var replyLi = document.createElement("div");
     replyLi.setAttribute("class", "message_left_item new");
@@ -159,10 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   }
 
+  // 3. 根据疾病名称创建卡片并渲染症状
   function renderSymptomsByDiseaseName(diseaseName, symptoms) {
     createResultCard(diseaseName, symptoms);
   }
 
+  // 4. 创建卡片并绑定滚动事件
   function createResultCard(diseaseName, symptoms, isPredicted = false) {
     const resultContentContainer = document.querySelector(".result_content");
 
@@ -214,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     symptomListContainer.classList.add("symptom_list");
     symptomInfo.appendChild(symptomListContainer);
 
+    // 生成唯一ID前缀
     const cardIdPrefix = `${diseaseName}_${new Date().getTime()}`;
 
     symptoms.forEach((symptom, index) => {
@@ -248,10 +268,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resultContentContainer.appendChild(resultCard);
 
+    // 禁止页面滚动的函数
     function preventScroll(e) {
       e.stopPropagation();
     }
 
+    // 监听鼠标进入症状列表区域事件
     symptomListContainer.addEventListener("mouseenter", function (e) {
       if (
         symptomListContainer.scrollHeight > symptomListContainer.clientHeight
@@ -315,18 +337,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   }
 
+  // 5. 获取用户选择结果的函数
   function getUserSelections() {
+    // 获取所有的症状项
     const symptomItems = document.querySelectorAll(".simptom_item");
     const userSelections = {};
     let allSelected = true;
 
     symptomItems.forEach((item) => {
+      // 获取当前症状名称
       const symptomName = item.querySelector(".symptom_name").textContent;
+
+      // 找到当前症状下用户选择的radio按钮
       const selectedOption = item.querySelector('input[type="radio"]:checked');
+
+      // 获取选中的值（yes, no, maybe）
       const selectedValue = selectedOption ? selectedOption.value : null;
 
+      // 将结果存储在对象中，键是症状名称，值是用户的选择
       userSelections[symptomName] = selectedValue;
 
+      // 如果有未选择的选项，设置 allSelected 为 false
       if (!selectedValue) {
         allSelected = false;
       }
@@ -346,50 +377,70 @@ document.addEventListener("DOMContentLoaded", function () {
     return { userSelections, allSelected };
   }
 
+  // 6. 症状匹配评分
   function calculateDiseaseScores(userSelections, diseasesData) {
+    // 存储每个疾病的匹配分数
     const diseaseScores = {};
 
+    // 遍历所有疾病
     for (const [diseaseName, diseaseInfo] of Object.entries(diseasesData)) {
+      // 初始化当前疾病的匹配分数
       let score = 0;
+      // 遍历当前疾病关联的所有症状
       diseaseInfo.Symptom.forEach((symptomInfo) => {
         const symptomName = symptomInfo.SymptomName;
         const symptomPossibility = symptomInfo.Possibility;
         if (userSelections[symptomName] != undefined) {
+          // 根据症状名称从用户选择中获取用户的选择
           const userChoice = userSelections[symptomName];
           if (userChoice === "yes") {
             score += symptomPossibility;
           } else if (userChoice === "maybe") {
             score += symptomPossibility * 0.5;
           } else if (userChoice === "no") {
-            return;
+            return; // no 意味着没有这个症状，就是 0
           }
         }
       });
+      // 将当前疾病的最终得分存储到 diseaseScores 对象中
       diseaseScores[diseaseName] = score;
     }
+    // 返回包含所有疾病匹配分数的对象
     return diseaseScores;
   }
 
+  // 7. 关联症状到其他可能的疾病
   function findRelatedDiseases(userSelections, symptomsData) {
+    // 存储相关疾病及其累积的可能性分数
     const relatedDiseases = {};
+    // 遍历用户对症状的选择
     for (const [symptomName, choice] of Object.entries(userSelections)) {
+      // 仅处理用户选择为 "yes" 或 "maybe" 的症状
       if (choice === "yes" || choice === "maybe") {
+        // 从 symptomsData 中获取与当前症状相关的疾病信息
         const symptomInfo = symptomsData[symptomName];
 
+        // 如果症状信息存在，则处理关联的疾病
         if (symptomInfo) {
+          // 遍历当前症状关联的每个疾病
           symptomInfo.diseases.forEach((disease) => {
+            // 如果疾病还没有记录在 relatedDiseases 中，则初始化为 0
             if (!relatedDiseases[disease.DiseaseName]) {
               relatedDiseases[disease.DiseaseName] = 0;
             }
+            // 根据用户选择累积该疾病的可能性分数
+            // "yes" 累积全额的可能性分数，"maybe" 累积一半的可能性分数
             relatedDiseases[disease.DiseaseName] +=
               disease.possibility * (choice === "yes" ? 1 : 0.5);
           });
         }
       }
     }
+    // 返回包含所有相关疾病及其累积分数的对象
     return relatedDiseases;
   }
 
+  // 8. 疾病排序与筛选
   function combineAndRankDiseases(
     diseaseScores,
     relatedDiseases,
@@ -411,6 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .map(([diseaseName, score]) => ({ diseaseName, score }));
   }
 
+  // 9. 迭代更新
   let predictionCount = 0;
   let finalResults = [];
   function onCardSwipe(
@@ -430,6 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     if (rankedDiseases.length > 0) {
+      // 找到第一个未在finalResults中出现的疾病
       let topDisease;
       for (const disease of rankedDiseases) {
         const isAlreadyPredicted = finalResults.some(
@@ -441,7 +494,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      // 如果找到未重复的疾病
       if (topDisease) {
+        // 获取当前疾病的症状并将用户的选择记录下来
         const symptoms = diseasesData[topDisease.diseaseName].Symptom.map(
           (symptomInfo) => {
             return {
@@ -451,15 +506,17 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         );
 
+        // 将疾病和症状信息一起推入 finalResults
         finalResults.push({
           diseaseName: topDisease.diseaseName,
           score: topDisease.score,
           symptoms: symptoms,
         });
 
+        // 创建结果卡片
         createResultCard(
           topDisease.diseaseName,
-          symptoms, 
+          symptoms, // 直接传递症状列表
           true
         );
 
@@ -566,9 +623,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function generateFinalReport(finalResults) {
     localStorage.setItem("finalResults", JSON.stringify(finalResults));
     localStorage.setItem("uniqueSymptoms", JSON.stringify(uniqueSymptoms));
-    window.location.href = "pdf.html";
+    window.location.href = `pdf.html`;
   }
 
+  // 滚动停顿功能
   let isScrolling = false;
   let lastScrollTime = 0;
   const resultContent = document.querySelector(".result_content");
@@ -683,43 +741,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   sendMessage("message_list_id", "button", "send_message_content");
   toggleSidebar("#toggleButton", "#sidebar");
-
-  // H5滑动切换的相关代码
-  let startY, endY, diffY;
-  const threshold = 50;  // 滑动触发阈值
-  let currentCardIndex = 0; // 当前显示的卡片索引
-
-  resultContent.addEventListener("touchstart", function (e) {
-    startY = e.touches[0].pageY;
-  });
-
-  resultContent.addEventListener("touchmove", function (e) {
-    endY = e.touches[0].pageY;
-    diffY = endY - startY;
-  });
-
-  resultContent.addEventListener("touchend", function () {
-    if (diffY < -threshold) {
-      // 向上滑动 - 显示下一张卡片
-      currentCardIndex++;
-      loadNextCard();
-    }
-  });
-
-  function loadNextCard() {
-    const newDisease = getNextDisease(); // 获取下一个疾病数据
-    if (newDisease) {
-      const symptoms = getDiseaseSymptoms(newDisease);
-      createResultCard(newDisease, symptoms, false);
-      setTimeout(() => {
-        const lastCard = document.querySelectorAll(".result_card")[currentCardIndex];
-        lastCard.scrollIntoView({ behavior: "smooth" });
-      }, 10);
-    }
-  }
-
-  function getNextDisease() {
-    // 模拟获取下一个疾病数据的函数，可以根据你的业务逻辑来实现
-    return "Next Disease Name";
-  }
 });
