@@ -17,6 +17,53 @@ html {
   html {
     font-size: 12px; /* 更小屏幕上的基准字体大小 */
   }
+
+  .result_content {
+    height: 100vh;
+    scroll-snap-type: none;
+    overflow-y: auto;
+  }
+
+  .result_card {
+    height: 100%;
+    padding: 1rem; /* 20px 转换为 rem */
+    opacity: 0; /* 初始透明度为0 */
+    transform: translateY(20px); /* 初始位置稍微向下 */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
+  }
+
+  .result_card.fade-in {
+    opacity: 1; /* 最终透明度为1 */
+    transform: translateY(0); /* 最终位置为原始位置 */
+  }
+
+  .result_image img {
+    max-height: 10rem; /* 在更小屏幕上进一步缩小图片高度 */
+  }
+
+  .symptom_name {
+    font-size: 0.875rem; /* 更小的屏幕调整为较小的字体大小 */
+  }
+
+  .symptom_list {
+    max-height: 40vh; /* 在更小屏幕上进一步限制高度 */
+  }
+
+  .simptom_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 0; /* 10px 转换为 rem */
+  }
+
+  .symptom_status {
+    display: flex;
+    gap: 0.625rem; /* 10px 转换为 rem */
+  }
+
+  .message_tip {
+    font-size: 2.5rem; /* 40px 转换为 rem */
+  }
 }
 
 @media (max-width: 480px) {
@@ -25,40 +72,34 @@ html {
   }
 }
 
-/* 整体布局 */
-.layout {
-  height: 100vh;
-  display: flex;
-  position: relative;
-  font-size: 1rem; /* 1rem 相当于根字体大小 */
-  /* overflow: hidden; */
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
+.layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* 收缩栏布局 */
 .side_bar {
   background-color: #eceeff;
   box-sizing: border-box;
-  width: 12.5rem; /* 200px 转换为 rem */
+  width: 9.375rem; /* 200px 转换为 rem */
   padding: 1.25rem; /* 20px 转换为 rem */
   transition: all 0.6s ease-in-out;
   position: relative;
+  flex-growth: 0;
+  flex-shrink: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  flex: 0.5;
   height: 100%;
 }
 
-.chat_content {
-  background: url("../images/background.png") no-repeat center center;
-  flex-grow: 1;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-/* 左侧布局 */
 .side_bar.hidden {
   width: 0;
   padding: 0;
@@ -102,128 +143,28 @@ html {
   text-overflow: ellipsis;
 }
 
-/* 中间布局 */
-.selected_symptom {
-  flex: 1;
-  background-image: linear-gradient(to right, rgba(99, 106, 154, 0.8), #d7d8ff);
-  flex-grow: 1.5;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  -ms-overflow-style: none; /* IE 和 Edge 隐藏滚动条 */
-  scrollbar-width: none; /* Firefox 隐藏滚动条 */
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* 适用于移动端的滚动惯性效果 */
-}
-
-.selected_symptom_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 0.9375rem;
-  background-color: #e0e6ff;
-}
-
-.selected_symptom_header_l {
-  font-size: 2rem;
-  font-weight: bold;
-  color: black;
-}
-
-.selected_symptom_header_r {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.selected_symptom_header_r div {
-  font-size: 1rem;
-  font-weight: bold;
-  color: black;
-  display: block;
-  cursor: pointer;
-}
-
-.selected_symptom_main {
-  box-sizing: border-box;
-  padding: 0 1.25rem 0 1.25rem;
-}
-
-.selected_symptom_list {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  background-color: #e0e6ff;
-  border-radius: 1.875rem;
-  box-sizing: border-box;
-  padding: 1.875rem;
-  height: 25rem;
-  overflow-y: auto;
-  margin-bottom: 3rem;
-}
-
-.preview {
-  width: 100%;
-  height: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-}
-
-.preview img {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-right: 0.625rem;
-}
-
-.preview_text {
-  font-size: 1.2rem;
-  color: #eceeff;
-  font-weight: bold;
-}
-
-.selected_symptom_item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-}
-
-.selected_symptom_item div:first-child {
-  font-size: 1.5rem;
-  color: black;
-  font-weight: bold;
-}
-
-.selected_symptom_item div:last-child img {
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-}
-
-/* 右侧布局 */
+/* 聊天框布局 */
 .chat_content {
+  background: url("../images/background.png") no-repeat center center;
+  background-size: 100% 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex: 1.5;
+  flex:2;
 }
 
 .chat_content .message_container {
   position: relative;
   width: 100%;
-  height: calc(100vh - 4.375rem); /* 70px 转换为 rem */
+  flex: 1;
+  overflow-y: auto;
 }
 
 .message_container .logo {
-  position:absolute;
-  right:1rem;
-  top:1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
   width: 6rem;
   height: 4rem;
 }
@@ -237,14 +178,9 @@ html {
   position: absolute;
   left: 0.625rem; /* 10px 转换为 rem */
   top: 1.875rem; /* 30px 转换为 rem */
-  font-size: 3.75rem; /* 60px 转换为 rem */
+  font-size: 2rem; /* 60px 转换为 rem */
   font-family: "League Spartan";
   font-weight: bold;
-}
-
-.message_area {
-  width: 100%;
-  height: 100%;
 }
 
 .message_list {
@@ -260,27 +196,22 @@ html {
 
 .message_left {
   width: 100%;
-  height: 7.5rem; /* 120px 转换为 rem */
-  margin-top: 1.25rem; /* 20px 转换为 rem */
+  margin-top: 2.5rem; /* 20px 转换为 rem */
 }
 
-/* 左边 */
 .message_left_item {
   width: 55%;
   height: 6.25rem; /* 100px 转换为 rem */
   float: left;
-  margin-top: 0.625rem; /* 10px 转换为 rem */
   margin-left: 1.25rem; /* 20px 转换为 rem */
   transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
 }
 
-/* 新增的左边消息，初始透明度和位置设置 */
 .message_left_item.new {
   opacity: 0; /* 初始透明度为0 */
   transform: translateY(20px); /* 初始位置稍微向下 */
 }
 
-/* 动画触发样式 */
 .message_left_item.new.fade-in {
   opacity: 1; /* 最终透明度为1 */
   transform: translateY(0); /* 最终位置为原始位置 */
@@ -289,7 +220,6 @@ html {
 .message_left_item .message_left_content {
   position: relative;
   padding: 0.9375rem; /* 15px 转换为 rem */
-  margin-top: 0.625rem; /* 10px 转换为 rem */
   display: inline-block;
   border-top-left-radius: 0px;
   background: #e0e6ff;
@@ -314,17 +244,13 @@ html {
   border-color: transparent #e0e6ff transparent transparent;
 }
 
-/* 右边 */
 .message_right {
   width: 100%;
   height: 7.5rem; /* 120px 转换为 rem */
-  margin-top: 1.25rem; /* 20px 转换为 rem */
-  opacity: 0; /* 初始透明度为0 */
   transform: translateY(20px); /* 初始位置稍微向下 */
   transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
 }
 
-/* 动画触发样式 */
 .message_right.fade-in {
   opacity: 1; /* 最终透明度为1 */
   transform: translateY(0); /* 最终位置为原始位置 */
@@ -408,7 +334,7 @@ html {
 .send_message .send_button {
   width: 2.5rem; /* 40px 转换为 rem */
   height: 1.5625rem; /* 25px 转换为 rem */
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: #636a9a;
   display: flex;
   justify-content: center;
@@ -425,19 +351,120 @@ html {
   display: block;
 }
 
-.result_content {
-  flex: 1;
+.selected_symptom {
   background-image: linear-gradient(to right, rgba(99, 106, 154, 0.8), #d7d8ff);
-  flex-grow: 1.5;
   background-size: cover;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   -ms-overflow-style: none; /* IE 和 Edge 隐藏滚动条 */
   scrollbar-width: none; /* Firefox 隐藏滚动条 */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; /* 适用于移动端的滚动惯性效果 */
+  flex:2;
+}
+
+.selected_symptom_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.9375rem;
+  background-color: #e0e6ff;
+}
+
+.selected_symptom_header_l {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+}
+
+.selected_symptom_header_r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected_symptom_header_r div {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  display: block;
+  cursor: pointer;
+}
+
+.selected_symptom_main {
+  box-sizing: border-box;
+  padding: 0 1.25rem 0 1.25rem;
+  display:flex;
+  flex-direction:column;
+}
+
+.selected_symptom_list {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: #e0e6ff;
+  border-radius: 1.875rem;
+  box-sizing: border-box;
+  padding: 1.875rem;
+  height: 25rem;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+}
+
+.preview {
+  width: 100%;
+  height: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.preview img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.625rem;
+}
+
+.preview_text {
+  font-size: 1.2rem;
+  color: #eceeff;
+  font-weight: bold;
+}
+
+.selected_symptom_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.selected_symptom_item div:first-child {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+}
+
+.selected_symptom_item div:last-child img {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.result_content {
+  background-image: linear-gradient(to right, rgba(99, 106, 154, 0.8), #d7d8ff);
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none; /* IE 和 Edge 隐藏滚动条 */
+  scrollbar-width: none; /* Firefox 隐藏滚动条 */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* 适用于移动端的滚动惯性效果 */
+  flex:3;
 }
 
 .result_content::-webkit-scrollbar {
@@ -446,7 +473,10 @@ html {
 
 .result_card {
   width: 100%;
-  height: 100vh; /* 设置卡片高度为视口高度 */
+  /* 移动端要设置为 100% */
+  /* height: 100%;  */
+  /* PC端要设置为 100vh */
+  /* height: 100vh;  */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -461,7 +491,7 @@ html {
 
 .result_header {
   background-color: transparent;
-  font-size: 2.5rem; /* 45px 转换为 rem */
+  font-size: 2rem; /* 45px 转换为 rem */
   font-family: "League Spartan";
   font-weight: bold;
   margin-bottom: 1rem;
@@ -520,10 +550,17 @@ html {
   font-family: "DM Sans";
 }
 
+.symptom_intro {
+  margin-top: 0.5rem; /* 20px 转换为 rem */
+  font-weight: bold;
+  color: #676778;
+  font-family: "DM Sans";
+}
+
 .symptom_list {
   display: flex;
   flex-direction: column;
-  height:calc(100vh - 37.5rem);
+  height: 12rem;
   overflow-y: auto; /* 启用独立滚动 */
   margin-bottom: 1rem;
 }
@@ -532,7 +569,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.625rem 0; /* 10px 转换为 rem */
+  /* padding: 0.625rem 0; */
 }
 
 .symptom_name {
@@ -542,12 +579,10 @@ html {
   width: 9.375rem;
 }
 
-/* 设置单选框外观为隐藏 */
 .symptom_status input[type="radio"] {
   display: none;
 }
 
-/* 设置单选框的label外观 */
 .symptom_status input[type="radio"] + label {
   width: 1.875rem; /* 30px 转换为 rem */
   height: 1.875rem; /* 30px 转换为 rem */
@@ -559,12 +594,10 @@ html {
   margin: 0.3125rem; /* 5px 转换为 rem */
 }
 
-/* 选中状态下的label样式 */
 .symptom_status input[type="radio"]:checked + label {
   border-color: #6c6c6c;
 }
 
-/* 单个按钮的颜色 */
 .symptom_status input[type="radio"]:nth-of-type(1):checked + label {
   background-color: #8bc34a; /* 绿色 */
 }
@@ -584,57 +617,4 @@ html {
   border-right: 2rem solid transparent; /* 50px 转换为 rem */
   border-top: 2rem solid #6c6c6c; /* 50px 转换为 rem */
   margin: 0.5rem auto; /* 50px 转换为 rem */
-}
-
-@media (max-width: 768px) {
-
-  .result_content {
-    height: 100vh;
-    scroll-snap-type: none;
-    overflow-y: auto;
-    /* padding: 0.625rem; 10px 转换为 rem */
-  }
-
-  .result_card {
-    height: 100%;
-    padding: 1rem; /* 20px 转换为 rem */
-    /* margin-bottom: 1.25rem; */
-    opacity: 0; /* 初始透明度为0 */
-    transform: translateY(20px); /* 初始位置稍微向下 */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* 添加过渡效果 */
-  }
-
-  /* 动画触发样式 */
-  .result_card.fade-in {
-    opacity: 1; /* 最终透明度为1 */
-    transform: translateY(0); /* 最终位置为原始位置 */
-  }
-
-  .result_image img {
-    max-height: 10rem; /* 在更小屏幕上进一步缩小图片高度 */
-  }
-
-  .symptom_name {
-    font-size: 0.875rem; /* 更小的屏幕调整为较小的字体大小 */
-  }
-
-  .symptom_list {
-    max-height: 40vh; /* 在更小屏幕上进一步限制高度 */
-  }
-
-  .simptom_item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.625rem 0; /* 10px 转换为 rem */
-  }
-
-  .symptom_status {
-    display: flex;
-    gap: 0.625rem; /* 10px 转换为 rem */
-  }
-
-  .message_tip {
-    font-size: 2.5rem; /* 40px 转换为 rem */
-  }
 }

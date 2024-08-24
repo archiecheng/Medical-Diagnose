@@ -1,20 +1,31 @@
 <!--
  * @Author: archiecheng archiechengice@outlook.com
- * @Date: 2024-08-02 20:16:20
+ * @Date: 2024-08-24 03:15:20
  * @LastEditors: archiecheng archiechengice@outlook.com
- * @LastEditTime: 2024-08-23 15:30:24
+ * @LastEditTime: 2024-08-24 03:46:07
  * @FilePath: \medical_diagnose\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!--
+ * @Author: archiecheng archiechengice@outlook.com
+ * @Date: 2024-08-02 20:16:20
+ * @LastEditors: archiecheng archiechengice@outlook.com
+ * @LastEditTime: 2024-08-24 01:18:55
+ * @FilePath: \medical_diagnose\index.html
+ * @Description: 这是默认设置,请设置customMade, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
 <html>
   <head>
     <title>Medical Diagnose</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <link rel="stylesheet" href="./assets/css/index.css" />
-    <script src="./assets/jquery/jquery.min.js"></script>
-    <script src="./assets/js/index.js"></script>
+    <!-- <script src="./assets/jquery/jquery.min.js"></script> -->
+    <!-- <script src="./assets/js/index.js"></script> -->
   </head>
   <body>
     <div class="layout">
@@ -28,27 +39,12 @@
           <li class="nav-item">
             <a href="#">Home</a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="#">Symptom Profile</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Reports</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Settings</a>
-          </li>
-          <li class="nav-item">
-            <a href="#">Contact</a>
-          </li> -->
         </ul>
       </div>
       <div class="chat_content">
         <div class="message_container">
           <div class="logo">
-            <img src="./assets/images/logo.png" alt="">
+            <img src="./assets/images/logo.png" alt="" />
           </div>
           <div class="message_tip">
             How Can We <br />
@@ -56,8 +52,7 @@
             Today? <br />
           </div>
           <div class="message_list" id="message_list_id">
-            <!-- 左边 -->
-            <div class="message_left clearfix">
+            <div class="message_left">
               <div class="message_left_item">
                 <div class="message_left_content">
                   Please enter what you have been diagnosed with and any
@@ -68,23 +63,14 @@
                 </div>
               </div>
             </div>
-            <div class="message_left clearfix">
+            <div class="message_left">
               <div class="message_left_item">
                 <div class="message_left_content">
-                  <!-- Additional warnings and disclaimers -->
-                  Please a disease name
+                  Please enter a disease name
                 </div>
               </div>
             </div>
-            <!--右边 -->
-            <div class="message_right">
-              <!-- <div class="message_right_item">
-                <div class="message_right_content">Disease Name</div>
-                <div class="message_right_avatar">
-                  <img src="./assets/images/avatar.png" alt="" />
-                </div>
-              </div> -->
-            </div>
+            <div class="message_right"></div>
           </div>
         </div>
         <div class="send_message">
@@ -98,34 +84,51 @@
       </div>
       <div class="selected_symptom">
         <div class="selected_symptom_header">
-          <div class="selected_symptom_header_l"
-            >Symptom <br />
-            Profile</div
-          >
+          <div class="selected_symptom_header_l">Symptom <br />Profile</div>
           <div class="selected_symptom_header_r">
-            <div id="selected_symptom_yes">Yes</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
-            <div id="selected_symptom_maybe">No</div>&nbsp;&nbsp;<div>|</div>&nbsp;&nbsp;
-            <div id="selected_symptom_no">Maybe</div>
+            <div id="selected_symptom_yes">Yes</div>
+            &nbsp;&nbsp;
+            <div>|</div>
+            &nbsp;&nbsp;
+            <div id="selected_symptom_no">No</div>
+            &nbsp;&nbsp;
+            <div>|</div>
+            &nbsp;&nbsp;
+            <div id="selected_symptom_maybe">Maybe</div>
           </div>
         </div>
         <div class="selected_symptom_main">
-          <div class="message_left clearfix" style="margin-bottom: 1.875rem;">
+          <div class="message_left">
             <div class="message_left_item">
               <div class="message_left_content">
-                Please review the symptoms you have selected. Click (X) to unselect.
+                Please review the symptoms you have selected. Click (X) to
+                unselect.
               </div>
             </div>
           </div>
-          <div class="selected_symptom_list">
-          </div>
-          <div class="preview content_hidden" id="preview_report">
-            <img src="./assets/images/preview.png" alt="">
+          <div class="selected_symptom_list"></div>
+          <div class="preview" id="preview_report">
+            <img src="./assets/images/preview.png" alt="" />
             <div class="preview_text">Preview the Report</div>
           </div>
         </div>
       </div>
-      <div class="result_content">
-      </div>
+      <div class="result_content"></div>
     </div>
+    <script src="./assets/jquery/jquery.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var script = document.createElement("script");
+        script.onload = function () {
+          console.log("Script loaded and ready:", script.src);
+        };
+        if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+          script.src = "./assets/js/index_mobile.js";
+        } else {
+          script.src = "./assets/js/index_pc.js";
+        }
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
 </html>
