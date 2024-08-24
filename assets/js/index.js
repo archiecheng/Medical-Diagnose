@@ -257,14 +257,14 @@ document.addEventListener("DOMContentLoaded", function () {
       symptomItem.innerHTML = `
 <div class="symptom_name">${symptom.SymptomName}</div>
 <div class="symptom_status">
-    <input type="radio" id="${uniqueSymptomId}_yes" name="${uniqueSymptomId}" value="yes" />
-    <label for="${uniqueSymptomId}_yes"></label>
+<input type="radio" id="${uniqueSymptomId}_yes" name="${uniqueSymptomId}" value="yes" />
+<label for="${uniqueSymptomId}_yes"></label>
 
-    <input type="radio" id="${uniqueSymptomId}_maybe" name="${uniqueSymptomId}" value="maybe" />
-    <label for="${uniqueSymptomId}_maybe"></label>
+<input type="radio" id="${uniqueSymptomId}_maybe" name="${uniqueSymptomId}" value="maybe" />
+<label for="${uniqueSymptomId}_maybe"></label>
 
-    <input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
-    <label for="${uniqueSymptomId}_no"></label>
+<input type="radio" id="${uniqueSymptomId}_no" name="${uniqueSymptomId}" value="no" />
+<label for="${uniqueSymptomId}_no"></label>
 </div>
 `;
       symptomListContainer.appendChild(symptomItem);
@@ -308,6 +308,28 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       { passive: false }
     );
+
+    // 处理移动设备上的触摸事件
+    symptomListContainer.addEventListener("touchstart", function (e) {
+      const initialY = e.touches[0].clientY;
+
+      symptomListContainer.addEventListener("touchmove", function (e) {
+        const currentY = e.touches[0].clientY;
+        const deltaY = currentY - initialY;
+
+        if (
+          symptomListContainer.scrollHeight >
+            symptomListContainer.clientHeight &&
+          deltaY !== 0
+        ) {
+          e.stopPropagation(); // 阻止事件冒泡
+        }
+      });
+    });
+
+    symptomListContainer.addEventListener("touchend", function () {
+      symptomListContainer.removeEventListener("touchmove", null);
+    });
 
     // 使用 setTimeout 延迟添加动画类
     setTimeout(() => {
