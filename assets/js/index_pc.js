@@ -118,14 +118,19 @@ function clearDiseaseCards() {
 
 // 处理用户输入的信息
 function processMessage(text, send_message) {
-  var symptoms = getDiseaseSymptoms(text);
+  // 增加模糊搜索
+  const lowerCaseInput = text.toLowerCase();
+  const diseaseKeys = Object.keys(diseasesData);
+  const matchedDiseases = diseaseKeys.find(key => key.toLowerCase().includes(lowerCaseInput));
+  
+  var symptoms = getDiseaseSymptoms(matchedDiseases);
 
   if (symptoms) {
     var replyMessage = generateReplyMessage(symptoms);
     appendReplyMessage(send_message, replyMessage);
     send_message.scrollTop = send_message.scrollHeight;
 
-    setTimeout(() => renderSymptomsByDiseaseName(text, symptoms), 1000); // 渲染症状
+    setTimeout(() => renderSymptomsByDiseaseName(matchedDiseases, symptoms), 1000); // 渲染症状
   } else {
     var replyMessage = "No information available for this disease.";
     appendReplyMessage(send_message, replyMessage);
