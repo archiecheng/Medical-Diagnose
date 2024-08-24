@@ -760,7 +760,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 在滑动处理结束后，检查是否已经滑动到第五张卡片并且所有症状已选择
     if (predictionCount === 5 && allSelected) {
-      generateFinalReport(finalResults);
+      if (isMobile) {
+        // 显示 profile symptoms 区域
+        $(".result_content")
+          .removeClass("content_show")
+          .addClass("content_hidden");
+        $(".selected_symptom")
+          .removeClass("content_hidden")
+          .addClass("content_show");
+      } else {
+        generateFinalReport(finalResults);
+      }
     }
   }
 
