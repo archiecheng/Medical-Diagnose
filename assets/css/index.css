@@ -491,7 +491,7 @@ body {
 
 .result_header {
   background-color: transparent;
-  font-size: 2rem; /* 45px 转换为 rem */
+  font-size: 1.5rem; /* 45px 转换为 rem */
   font-family: "League Spartan";
   font-weight: bold;
   margin-bottom: 1rem;
