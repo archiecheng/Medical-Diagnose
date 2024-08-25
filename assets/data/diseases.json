@@ -1,981 +1,1172 @@
 {
-    "Common cold": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "1",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
-        "Symptom": [
-            {
-                "SymptomName": "congestion",
-                "Possibility": 0.14
-            },
-            {
-                "SymptomName": "slight body aches",
-                "Possibility": 0.14
-            },
-            {
-                "SymptomName": "sneezing",
-                "Possibility": 0.14
-            },
-            {
-                "SymptomName": "runny or stuffy nose",
-                "Possibility": 0.14
-            },
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.14
-            },
-            {
-                "SymptomName": "low-grade fever",
-                "Possibility": 0.14
-            },
-            {
-                "SymptomName": "sore throat",
-                "Possibility": 0.14
-            }
-        ]
-    },
-    "Diabetes": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Moderate to Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/diabetes/symptoms-causes/syc-20371444",
-        "Symptom": [
-            {
-                "SymptomName": "unexplained weight loss",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "blurred vision",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "presence of ketones in the urine (ketones are a byproduct of the breakdown of muscle and fat that happens when there's not enough available insulin)",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "fatigue",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "increased thirst",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "extreme hunger",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "irritability",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "frequent urination",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "slow-healing sores",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "frequent infections such as gums or skin infections and vaginal infections",
-                "Possibility": 0.1
-            }
-        ]
-    },
-    "HIV/AIDS": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/hiv-aids/symptoms-causes/syc-20373524",
-        "Symptom 1": "Rash",
-        "Symptom": [
-            {
-                "SymptomName": "weight loss",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "sore throat and painful mouth sores",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "swollen lymph glands mainly on the neck",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "fever",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "muscle aches and joint pain",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "diarrhea",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.1
-            },
-            {
-                "SymptomName": "night sweats",
-                "Possibility": 0.1
-            }
-        ]
-    },
-    "Stroke": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/stroke/symptoms-causes/syc-20350113",
-        "Symptom": [
-            {
-                "SymptomName": "problems seeing in one or both eyes ",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "trouble walking",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "numbness weakness or paralysis in the face arm or leg",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "numbness weakness or paralysis in the face arm or leg",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "trouble speaking and understanding what others are saying",
-                "Possibility": 0.17
-            }
-        ]
-    },
-    "COVID-19": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/coronavirus/symptoms-causes/syc-20479963",
-        "Symptom 1": "Fatigue",
-        "Symptom": [
-            {
-                "SymptomName": "sore throat",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "muscle or body aches",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "fever or chills",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "shortness of breath or difficulty breathing",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "new loss of taste or smell",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "congestion or runny nose",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "nausea or vomiting",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "diarrhea",
-                "Possibility": 0.09
-            }
-        ]
-    },
-    "Tuberculosis": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/tuberculosis/symptoms-causes/syc-20351250",
-        "Symptom": [
-            {
-                "SymptomName": "coughing up blood or mucus",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "night sweats",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "chest pain",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "weight loss",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "low fever",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "fever",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "tiredness",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "not feeling well in general",
-                "Possibility": 0.11
-            }
-        ]
-    },
-    "Frontotemporal dementia": {
-        "Rarity (1= rare, 0=common)": 1,
-        "Severity (1-10)": "Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/frontotemporal-dementia/symptoms-causes/syc-20354737",
-        "Symptom": [
-            {
-                "SymptomName": "motor issues",
-                "Possibility": 0.33
-            },
-            {
-                "SymptomName": "changes in personality and behavior",
-                "Possibility": 0.33
-            },
-            {
-                "SymptomName": "difficulty with speech",
-                "Possibility": 0.33
-            }
-        ]
-    },
-    "Influenza (Flu)": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/flu/symptoms-causes/syc-20351719",
-        "Symptom 1": "Headache",
-        "Symptom": [
-            {
-                "SymptomName": "runny or stuffy nose",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "dry persistent cough",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "shortness of breath",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "fever",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "chills and sweats",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "tiredness and weakness",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "aching muscles",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "sore throat",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "eye pain",
-                "Possibility": 0.09
-            },
-            {
-                "SymptomName": "vomiting and diarrhea but this is more common in children than adults",
-                "Possibility": 0.09
-            }
-        ]
-    },
-    "Insomnia": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/insomnia/symptoms-causes/syc-20355167",
-        "Symptom 1": "Feeling tired or sleepy during the day.\r",
-        "Symptom": [
-            {
-                "SymptomName": "having ongoing worries about sleep.\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "feeling cranky, depressed or anxious.\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "having a hard time paying attention, focusing on tasks or remembering.\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "having a hard time falling asleep at night.",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "waking up too early.",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "making more errors or having more accidents.\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "waking up during the night.\r",
-                "Possibility": 0.12
-            }
-        ]
-    },
-    "Antisocial personality disorder": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/antisocial-personality-disorder/symptoms-causes/syc-20353928",
-        "Symptom 1": "conning others",
-        "Symptom": [
-            {
-                "SymptomName": "disregard for right and wrong",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "stealing",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "lack of remorse",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "using aliases",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "persistent lying",
-                "Possibility": 0.17
-            }
-        ]
-    },
-    "Borderline personality disorder": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/borderline-personality-disorder/symptoms-causes/syc-20370237",
-        "Symptom 1": "impulsivity",
-        "Symptom": [
-            {
-                "SymptomName": "inappropriate anger",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "suicidal behavior",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "emotional instability",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "fear of abandonment",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "identity disturbance",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "feelings of emptiness",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "unstable relationships",
-                "Possibility": 0.12
-            }
-        ]
-    },
-    "Narcissistic personality disorder": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Severity Varies ; Mild, Moderate, Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/narcissistic-personality-disorder/symptoms-causes/syc-20366662",
-        "Symptom": [
-            {
-                "SymptomName": "make achievements and talents seem bigger than they are",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "be critical of and look down on people they feel are not important.expect special favors and expect other people to do what they want without questioning them",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "be preoccupied with fantasies about success power brilliance beauty or the perfect mate",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "believe they are superior to others and can only spend time with or be understood by equally special people",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "have an unreasonably high sense of self-importance and require constant excessive admiration",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "expect to be recognized as superior even without achievements",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "be critical of and look down on people they feel are not important",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "feel that they deserve privileges and special treatment",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "take advantage of others to get what they want",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "have an inability or unwillingness to recognize the needs and feelings of others",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "be envious of others and believe others envy them",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "behave in an arrogant way brag a lot and come across as conceited",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "insist on having the best of everything ?\u20ac? for instance the best car or office",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "become impatient or angry when they don't receive special recognition or treatment",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "have major problems interacting with others and easily feel slighted",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "react with rage or contempt and try to belittle other people to make themselves appear superior",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "experience major problems dealing with stress and adapting to change",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "have difficulty managing their emotions and behavior",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "experience major problems dealing with stress and adapting to change",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "withdraw from or avoid situations in which they might fail",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "feel depressed and moody because they fall short of perfection",
-                "Possibility": 0.05
-            },
-            {
-                "SymptomName": "have secret feelings of insecurity shame humiliation and fear of being exposed as a failure",
-                "Possibility": 0.05
-            }
-        ]
-    },
-    "Plague ": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/plague/symptoms-causes/syc-20351291",
-        "Symptom 1": "Muscle aches",
-        "Symptom": [
-            {
-                "SymptomName": "vomiting",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "weakness",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "stomach pain",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "fever",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "diarrhea",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "chills",
-                "Possibility": 0.12
-            }
-        ]
-    },
-    "Pink eye (conjunctivitis)": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Severity Varies ; Mild to Moderate",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/pink-eye/symptoms-causes/syc-20376355",
-        "Symptom": [
-            {
-                "SymptomName": "a discharge in one or both eyes that forms a crust during the night that may prevent your eye or eyes from opening in the morning",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "sensitivity to light called photophobia",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "itchiness in one or both eyes",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "tearing",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "a gritty feeling in one or both eyes",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "redness in one or both eyes",
-                "Possibility": 0.17
-            }
-        ]
-    },
-    "Tapeworm infection": {
-        "Rarity (1= rare, 0=common)": 1,
-        "Severity (1-10)": "Mild to Moderate",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/tapeworm/symptoms-causes/syc-20378174",
-        "Symptom": [
-            {
-                "SymptomName": "loose stools",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "hunger pains",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "diarrhea",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "weight loss",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "upset stomach or feeling like you could throw up",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "not wanting to eat",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "gas",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "stomachache or stomach pain",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "cravings for salty food",
-                "Possibility": 0.11
-            }
-        ]
-    },
-    "Asthma": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653",
-        "Symptom 1": "Trouble sleeping caused by shortness of breath coughing or wheezing",
-        "Symptom": [
-            {
-                "SymptomName": "chest tightness or pain",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "coughing or wheezing attacks that are worsened by a respiratory virus such as a cold or the flu",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "wheezing when exhaling",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "shortness of breath",
-                "Possibility": 0.2
-            }
-        ]
-    },
-    "Schizophrenia": {
-        "Rarity (1= rare, 0=common)": 1,
-        "Severity (1-10)": "Severity Varies ; Mild , Moderate , Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/schizophrenia/symptoms-causes/syc-20354443",
-        "Symptom": [
-            {
-                "SymptomName": "extremely disorganized or unusual motor behavior ",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "hallucinations ",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "negative symptoms",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "disorganized speech and thinking ",
-                "Possibility": 0.2
-            },
-            {
-                "SymptomName": "delusions",
-                "Possibility": 0.2
-            }
-        ]
-    },
-    "Alzheimer's Disease": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447",
-        "Symptom 1": "Difficulty understanding visual images and spatial relationships",
-        "Symptom": [
-            {
-                "SymptomName": "withdrawal from work or social activities",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "problems with speaking or writing",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "misplacing things and losing the ability to retrace steps",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "memory loss",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "confusion with time or place",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "decreased or poor judgment",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "difficulty planning and solving problems",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "changes in mood and personality",
-                "Possibility": 0.11
-            }
-        ]
-    },
-    "Bird flu (avian influenza)": {
-        "Rarity (1= rare, 0=common)": 1,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/bird-flu/symptoms-causes/syc-20568390",
-        "Symptom 1": "muscle aches",
-        "Symptom": [
-            {
-                "SymptomName": "shortness of breath",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "fever",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "sore throat",
-                "Possibility": 0.17
-            },
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.17
-            }
-        ]
-    },
-    "Bipolar Disorder": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/bipolar-disorder/symptoms-causes/syc-20355955",
-        "Symptom 1": "Impulsiveness",
-        "Symptom": [
-            {
-                "SymptomName": "racing thoughts",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "risk-taking behaviors",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "increased activity or energy",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "mood swings",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "depressive episodes",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "decreased need for sleep",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "manic episodes",
-                "Possibility": 0.11
-            },
-            {
-                "SymptomName": "poor decision-making",
-                "Possibility": 0.11
-            }
-        ]
-    },
-    "E. coli infection": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/e-coli/symptoms-causes/syc-20372058",
-        "Symptom 1": "Occasional fever",
-        "Symptom": [
-            {
-                "SymptomName": "stomach cramping pain or tenderness",
-                "Possibility": 0.25
-            },
-            {
-                "SymptomName": "nausea and vomiting",
-                "Possibility": 0.25
-            },
-            {
-                "SymptomName": "diarrhea which may range from mild and watery to severe and bloody",
-                "Possibility": 0.25
-            }
-        ]
-    },
-    "H1N1 flu": {
-        "Rarity (1= rare, 0=common)": 1,
-        "Severity (1-10)": "Mild/Moderate/Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/swine-flu/symptoms-causes/syc-20378103",
-        "Symptom": [
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "eye pain",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "sore throat",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "runny or stuffy nose.",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "fever but not always.",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "chills and sweats",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "watery red eyes",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "aching muscles.\r",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "body aches.",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "tiredness and weakness.",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "diarrhea.",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "feeling sick to the stomach vomiting but this is more common in children than adults.",
-                "Possibility": 0.08
-            }
-        ]
-    },
-    "Malaria": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Severity Varies ; Mild, Moderate, Severe",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/malaria/symptoms-causes/syc-20351184",
-        "Symptom": [
-            {
-                "SymptomName": "abdominal pain",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "headache",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "fatigue",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "fever",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "diarrhea",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "chills",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "cough",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "general feeling of discomfort",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "muscle or joint pain",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "nausea and vomiting",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "rapid breathing",
-                "Possibility": 0.08
-            },
-            {
-                "SymptomName": "rapid heart rate",
-                "Possibility": 0.08
-            }
-        ]
-    },
-    "Hay fever": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Mild/Moderate",
-        "Overview Link": "https://www.mayoclinic.org/diseases-conditions/hay-fever/symptoms-causes/syc-20373039",
-        "Symptom": [
-            {
-                "SymptomName": "cough\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "extreme tiredness (fatigue) often due to poor sleep\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "itchy nose roof of mouth or throat",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "mucus that runs down the back of your throat (postnasal drip)\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "runny nose and nasal stuffiness (congestion)",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "sneezing\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "swollen bruised-appearing skin under the eyes (allergic shiners)\r",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "watery itchy red eyes (allergic conjunctivitis)\r",
-                "Possibility": 0.12
-            }
-        ]
-    },
-    "Nausea": {
-        "Rarity (1= rare, 0=common)": 0,
-        "Severity (1-10)": "Severity Varies ; Mild, Moderate, Severe",
-        "Overview Link": "https://www.mayoclinic.org/symptoms/nausea/basics/definition/sym-20050736",
-        "Symptom": [
-            {
-                "SymptomName": "confusion",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "high fever and stiff neck",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "fecal material or fecal odor in the vomit",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "chest pain",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "blurred vision",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "rectal bleeding",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "severe abdominal pain or cramping",
-                "Possibility": 0.12
-            },
-            {
-                "SymptomName": "end",
-                "Possibility": 0.12
-            }
-        ]
-    }
+  "Common cold": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "1",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
+    "Symptom": [
+      {
+        "SymptomName": "congestion",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "slight body aches",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "sneezing",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "runny or stuffy nose",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "low-grade fever",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "sore throat",
+        "Possibility": 0.14
+      }
+    ]
+  },
+  "Diabetes": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Moderate to Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/diabetes/symptoms-causes/syc-20371444",
+    "Symptom": [
+      {
+        "SymptomName": "unexplained weight loss",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "blurred vision",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "presence of ketones in the urine (ketones are a byproduct of the breakdown of muscle and fat that happens when there's not enough available insulin)",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "fatigue",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "increased thirst",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "extreme hunger",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "irritability",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "frequent urination",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "slow-healing sores",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "frequent infections such as gums or skin infections and vaginal infections",
+        "Possibility": 0.1
+      }
+    ]
+  },
+  "HIV/AIDS": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/hiv-aids/symptoms-causes/syc-20373524",
+    "Symptom 1": "Rash",
+    "Symptom": [
+      {
+        "SymptomName": "weight loss",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "sore throat and painful mouth sores",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "swollen lymph glands mainly on the neck",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "muscle aches and joint pain",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "diarrhea",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "night sweats",
+        "Possibility": 0.1
+      }
+    ]
+  },
+  "Stroke": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/stroke/symptoms-causes/syc-20350113",
+    "Symptom": [
+      {
+        "SymptomName": "problems seeing in one or both eyes ",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "trouble walking",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "numbness weakness or paralysis in the face arm or leg",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "numbness weakness or paralysis in the face arm or leg",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "trouble speaking and understanding what others are saying",
+        "Possibility": 0.17
+      }
+    ]
+  },
+  "COVID-19": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/coronavirus/symptoms-causes/syc-20479963",
+    "Symptom 1": "Fatigue",
+    "Symptom": [
+      {
+        "SymptomName": "sore throat",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "muscle or body aches",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "fever or chills",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "shortness of breath or difficulty breathing",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "new loss of taste or smell",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "congestion or runny nose",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "nausea or vomiting",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "diarrhea",
+        "Possibility": 0.09
+      }
+    ]
+  },
+  "Tuberculosis": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/tuberculosis/symptoms-causes/syc-20351250",
+    "Symptom": [
+      {
+        "SymptomName": "coughing up blood or mucus",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "night sweats",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "chest pain",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "weight loss",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "low fever",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "tiredness",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "not feeling well in general",
+        "Possibility": 0.11
+      }
+    ]
+  },
+  "Frontotemporal dementia": {
+    "Rarity (1= rare, 0=common)": 1,
+    "Severity (1-10)": "Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/frontotemporal-dementia/symptoms-causes/syc-20354737",
+    "Symptom": [
+      {
+        "SymptomName": "motor issues",
+        "Possibility": 0.33
+      },
+      {
+        "SymptomName": "changes in personality and behavior",
+        "Possibility": 0.33
+      },
+      {
+        "SymptomName": "difficulty with speech",
+        "Possibility": 0.33
+      }
+    ]
+  },
+  "Influenza (Flu)": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/flu/symptoms-causes/syc-20351719",
+    "Symptom 1": "Headache",
+    "Symptom": [
+      {
+        "SymptomName": "runny or stuffy nose",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "dry persistent cough",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "shortness of breath",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "chills and sweats",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "tiredness and weakness",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "aching muscles",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "sore throat",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "eye pain",
+        "Possibility": 0.09
+      },
+      {
+        "SymptomName": "vomiting and diarrhea but this is more common in children than adults",
+        "Possibility": 0.09
+      }
+    ]
+  },
+  "Insomnia": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/insomnia/symptoms-causes/syc-20355167",
+    "Symptom 1": "Feeling tired or sleepy during the day.\r",
+    "Symptom": [
+      {
+        "SymptomName": "having ongoing worries about sleep.\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "feeling cranky, depressed or anxious.\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "having a hard time paying attention, focusing on tasks or remembering.\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "having a hard time falling asleep at night.",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "waking up too early.",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "making more errors or having more accidents.\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "waking up during the night.\r",
+        "Possibility": 0.12
+      }
+    ]
+  },
+  "Antisocial personality disorder": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/antisocial-personality-disorder/symptoms-causes/syc-20353928",
+    "Symptom 1": "conning others",
+    "Symptom": [
+      {
+        "SymptomName": "disregard for right and wrong",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "stealing",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "lack of remorse",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "using aliases",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "persistent lying",
+        "Possibility": 0.17
+      }
+    ]
+  },
+  "Borderline personality disorder": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/borderline-personality-disorder/symptoms-causes/syc-20370237",
+    "Symptom 1": "impulsivity",
+    "Symptom": [
+      {
+        "SymptomName": "inappropriate anger",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "suicidal behavior",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "emotional instability",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "fear of abandonment",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "identity disturbance",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "feelings of emptiness",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "unstable relationships",
+        "Possibility": 0.12
+      }
+    ]
+  },
+  "Narcissistic personality disorder": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Severity Varies ; Mild, Moderate, Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/narcissistic-personality-disorder/symptoms-causes/syc-20366662",
+    "Symptom": [
+      {
+        "SymptomName": "make achievements and talents seem bigger than they are",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "be critical of and look down on people they feel are not important.expect special favors and expect other people to do what they want without questioning them",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "be preoccupied with fantasies about success power brilliance beauty or the perfect mate",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "believe they are superior to others and can only spend time with or be understood by equally special people",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "have an unreasonably high sense of self-importance and require constant excessive admiration",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "expect to be recognized as superior even without achievements",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "be critical of and look down on people they feel are not important",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "feel that they deserve privileges and special treatment",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "take advantage of others to get what they want",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "have an inability or unwillingness to recognize the needs and feelings of others",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "be envious of others and believe others envy them",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "behave in an arrogant way brag a lot and come across as conceited",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "insist on having the best of everything ?\u20ac? for instance the best car or office",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "become impatient or angry when they don't receive special recognition or treatment",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "have major problems interacting with others and easily feel slighted",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "react with rage or contempt and try to belittle other people to make themselves appear superior",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "experience major problems dealing with stress and adapting to change",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "have difficulty managing their emotions and behavior",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "experience major problems dealing with stress and adapting to change",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "withdraw from or avoid situations in which they might fail",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "feel depressed and moody because they fall short of perfection",
+        "Possibility": 0.05
+      },
+      {
+        "SymptomName": "have secret feelings of insecurity shame humiliation and fear of being exposed as a failure",
+        "Possibility": 0.05
+      }
+    ]
+  },
+  "Plague ": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/plague/symptoms-causes/syc-20351291",
+    "Symptom 1": "Muscle aches",
+    "Symptom": [
+      {
+        "SymptomName": "vomiting",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "weakness",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "stomach pain",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "diarrhea",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "chills",
+        "Possibility": 0.12
+      }
+    ]
+  },
+  "Pink eye (conjunctivitis)": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Severity Varies ; Mild to Moderate",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/pink-eye/symptoms-causes/syc-20376355",
+    "Symptom": [
+      {
+        "SymptomName": "a discharge in one or both eyes that forms a crust during the night that may prevent your eye or eyes from opening in the morning",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "sensitivity to light called photophobia",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "itchiness in one or both eyes",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "tearing",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "a gritty feeling in one or both eyes",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "redness in one or both eyes",
+        "Possibility": 0.17
+      }
+    ]
+  },
+  "Tapeworm infection": {
+    "Rarity (1= rare, 0=common)": 1,
+    "Severity (1-10)": "Mild to Moderate",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/tapeworm/symptoms-causes/syc-20378174",
+    "Symptom": [
+      {
+        "SymptomName": "loose stools",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "hunger pains",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "diarrhea",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "weight loss",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "upset stomach or feeling like you could throw up",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "not wanting to eat",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "gas",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "stomachache or stomach pain",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "cravings for salty food",
+        "Possibility": 0.11
+      }
+    ]
+  },
+  "Asthma": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653",
+    "Symptom 1": "Trouble sleeping caused by shortness of breath coughing or wheezing",
+    "Symptom": [
+      {
+        "SymptomName": "chest tightness or pain",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "coughing or wheezing attacks that are worsened by a respiratory virus such as a cold or the flu",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "wheezing when exhaling",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "shortness of breath",
+        "Possibility": 0.2
+      }
+    ]
+  },
+  "Schizophrenia": {
+    "Rarity (1= rare, 0=common)": 1,
+    "Severity (1-10)": "Severity Varies ; Mild , Moderate , Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/schizophrenia/symptoms-causes/syc-20354443",
+    "Symptom": [
+      {
+        "SymptomName": "extremely disorganized or unusual motor behavior ",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "hallucinations ",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "negative symptoms",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "disorganized speech and thinking ",
+        "Possibility": 0.2
+      },
+      {
+        "SymptomName": "delusions",
+        "Possibility": 0.2
+      }
+    ]
+  },
+  "Alzheimer's Disease": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447",
+    "Symptom 1": "Difficulty understanding visual images and spatial relationships",
+    "Symptom": [
+      {
+        "SymptomName": "withdrawal from work or social activities",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "problems with speaking or writing",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "misplacing things and losing the ability to retrace steps",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "memory loss",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "confusion with time or place",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "decreased or poor judgment",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "difficulty planning and solving problems",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "changes in mood and personality",
+        "Possibility": 0.11
+      }
+    ]
+  },
+  "Bird flu (avian influenza)": {
+    "Rarity (1= rare, 0=common)": 1,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/bird-flu/symptoms-causes/syc-20568390",
+    "Symptom 1": "muscle aches",
+    "Symptom": [
+      {
+        "SymptomName": "shortness of breath",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "sore throat",
+        "Possibility": 0.17
+      },
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.17
+      }
+    ]
+  },
+  "Bipolar Disorder": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/bipolar-disorder/symptoms-causes/syc-20355955",
+    "Symptom 1": "Impulsiveness",
+    "Symptom": [
+      {
+        "SymptomName": "racing thoughts",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "risk-taking behaviors",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "increased activity or energy",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "mood swings",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "depressive episodes",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "decreased need for sleep",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "manic episodes",
+        "Possibility": 0.11
+      },
+      {
+        "SymptomName": "poor decision-making",
+        "Possibility": 0.11
+      }
+    ]
+  },
+  "E. coli infection": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/e-coli/symptoms-causes/syc-20372058",
+    "Symptom 1": "Occasional fever",
+    "Symptom": [
+      {
+        "SymptomName": "stomach cramping pain or tenderness",
+        "Possibility": 0.25
+      },
+      {
+        "SymptomName": "nausea and vomiting",
+        "Possibility": 0.25
+      },
+      {
+        "SymptomName": "diarrhea which may range from mild and watery to severe and bloody",
+        "Possibility": 0.25
+      }
+    ]
+  },
+  "H1N1 flu": {
+    "Rarity (1= rare, 0=common)": 1,
+    "Severity (1-10)": "Mild/Moderate/Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/swine-flu/symptoms-causes/syc-20378103",
+    "Symptom": [
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "eye pain",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "sore throat",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "runny or stuffy nose.",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "fever but not always.",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "chills and sweats",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "watery red eyes",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "aching muscles.\r",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "body aches.",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "tiredness and weakness.",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "diarrhea.",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "feeling sick to the stomach vomiting but this is more common in children than adults.",
+        "Possibility": 0.08
+      }
+    ]
+  },
+  "Malaria": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Severity Varies ; Mild, Moderate, Severe",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/malaria/symptoms-causes/syc-20351184",
+    "Symptom": [
+      {
+        "SymptomName": "abdominal pain",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "headache",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "fatigue",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "diarrhea",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "chills",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "cough",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "general feeling of discomfort",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "muscle or joint pain",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "nausea and vomiting",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "rapid breathing",
+        "Possibility": 0.08
+      },
+      {
+        "SymptomName": "rapid heart rate",
+        "Possibility": 0.08
+      }
+    ]
+  },
+  "Hay fever": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Mild/Moderate",
+    "Overview Link": "https://www.mayoclinic.org/diseases-conditions/hay-fever/symptoms-causes/syc-20373039",
+    "Symptom": [
+      {
+        "SymptomName": "cough\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "extreme tiredness (fatigue) often due to poor sleep\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "itchy nose roof of mouth or throat",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "mucus that runs down the back of your throat (postnasal drip)\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "runny nose and nasal stuffiness (congestion)",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "sneezing\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "swollen bruised-appearing skin under the eyes (allergic shiners)\r",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "watery itchy red eyes (allergic conjunctivitis)\r",
+        "Possibility": 0.12
+      }
+    ]
+  },
+  "Nausea": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "Severity Varies ; Mild, Moderate, Severe",
+    "Overview Link": "https://www.mayoclinic.org/symptoms/nausea/basics/definition/sym-20050736",
+    "Symptom": [
+      {
+        "SymptomName": "confusion",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "high fever and stiff neck",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "fecal material or fecal odor in the vomit",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "chest pain",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "blurred vision",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "rectal bleeding",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "severe abdominal pain or cramping",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "end",
+        "Possibility": 0.12
+      }
+    ]
+  },
+  "Cutaneous T-cell lymphoma": {
+    "Rarity (1= rare, 0=common)": 1,
+    "Severity (1-10)": "7",
+    "Overview Link": "",
+    "Symptoms": [
+      {
+        "SymptomName": "round patches of skin that may be raised or scaly and might be itchy",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "patches of skin that appear lighter in color than surrounding skin",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "lumps that form on the skin and may break open",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "enlarged lymph nodes",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "hair loss",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "thickening of the skin on the palms of the hands and soles of the feet",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "a rash-like skin redness over the entire body that is intensely itchy",
+        "Possibility": 0.14
+      }
+    ]
+  },
+  "Eczema": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "3",
+    "Overview Link": "",
+    "Symptoms": [
+      {
+        "SymptomName": "dry, cracked skin",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "itchiness (pruritus)",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "rash on swollen skin that varies in color depending on your skin color",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "small, raised bumps, on brown or black skin",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "oozing and crusting",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "thickened skin",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "darkening of the skin around the eyes",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "raw, sensitive skin from scratching",
+        "Possibility": 0.12
+      }
+    ]
+  },
+  "Lupus": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "5",
+    "Overview Link": "",
+    "Symptoms": [
+      {
+        "SymptomName": "fatigue",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "fever",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "joint pain, stiffness and swelling",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "butterfly-shaped rash on the face that covers the cheeks and bridge of the nose or rashes elsewhere on the body",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "skin lesions that appear or worsen with sun exposure",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "fingers and toes that turn white or blue when exposed to cold or during stressful periods",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "shortness of breath",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "chest pain",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "dry eyes",
+        "Possibility": 0.1
+      },
+      {
+        "SymptomName": "headaches, confusion and memory loss",
+        "Possibility": 0.1
+      }
+    ]
+  },
+  "Dermatitis": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "3",
+    "Overview Link": "",
+    "Symptoms": [
+      {
+        "SymptomName": "itchiness that can be painful",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "dry, cracked, scaly skin, more typical on white skin",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "rash on swollen skin that varies in color depending on skin color",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "blisters, perhaps with oozing and crusting",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "dandruff",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "thickened skin",
+        "Possibility": 0.14
+      },
+      {
+        "SymptomName": "small, raised bumps, more typical on brown or black skin",
+        "Possibility": 0.14
+      }
+    ]
+  },
+  "Jock Itch": {
+    "Rarity (1= rare, 0=common)": 0,
+    "Severity (1-10)": "5",
+    "Overview Link": "",
+    "Symptoms": [
+      {
+        "SymptomName": "a spreading rash that begins in the crease of the groin and moves down the upper thigh and buttocks",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "a rash whose center tends to clear as the rash spreads",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "a rash that may be fully or partially ring shaped",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "a rash bordered with small blisters",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "itchiness",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "scaly skin",
+        "Possibility": 0.12
+      },
+      {
+        "SymptomName": "a rash that might be red, brown, purple or gray depending on your skin color",
+        "Possibility": 0.12
+      }
+    ]
+  }
 }
