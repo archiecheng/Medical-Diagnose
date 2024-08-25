@@ -121,8 +121,10 @@ function processMessage(text, send_message) {
   // 增加模糊搜索
   const lowerCaseInput = text.toLowerCase();
   const diseaseKeys = Object.keys(diseasesData);
-  const matchedDiseases = diseaseKeys.find(key => key.toLowerCase().includes(lowerCaseInput));
-  
+  const matchedDiseases = diseaseKeys.find((key) =>
+    key.toLowerCase().includes(lowerCaseInput)
+  );
+
   var symptoms = getDiseaseSymptoms(matchedDiseases);
 
   if (symptoms) {
@@ -130,7 +132,10 @@ function processMessage(text, send_message) {
     appendReplyMessage(send_message, replyMessage);
     send_message.scrollTop = send_message.scrollHeight;
 
-    setTimeout(() => renderSymptomsByDiseaseName(matchedDiseases, symptoms), 1000); // 渲染症状
+    setTimeout(
+      () => renderSymptomsByDiseaseName(matchedDiseases, symptoms),
+      1000
+    ); // 渲染症状
   } else {
     var replyMessage = "No information available for this disease.";
     appendReplyMessage(send_message, replyMessage);
@@ -533,7 +538,7 @@ function onCardSwipe(
 
       if (predictionCount === 5) {
         console.log(isMobile);
-        
+
         if (isMobile) {
           $(".result_content")
             .removeClass("content_show")
@@ -648,7 +653,7 @@ function generateFinalReport(finalResults) {
   localStorage.setItem("finalResults", JSON.stringify(finalResults));
   localStorage.setItem("uniqueSymptoms", JSON.stringify(uniqueSymptoms));
   // 页面跳转
-  window.location.href = 'pdf.html';
+  window.location.href = "pdf.html";
 }
 
 // 滚动停顿功能
@@ -658,27 +663,37 @@ const resultContent = document.querySelector(".result_content");
 
 function scrollToCard(targetCard) {
   isScrolling = true;
-  targetCard.scrollIntoView({ behavior: "smooth" });
 
+  // 禁用症状框的滚动处理
+  disableSymptomScrolling();
+
+  // 使用 CSS 的平滑滚动效果
+  targetCard.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "nearest",
+  });
+
+  // 增加动画时间，以确保滚动更加平滑
   setTimeout(() => {
     isScrolling = false;
-  }, 1000);
+
+    // 滚动完成后启用症状框的滚动处理
+    enableSymptomScrolling();
+  }, 1500); // 增加滚动时间到 1.5 秒
 }
 
 let scrollTimeout;
 
 function handleScroll(event) {
-  event.preventDefault(); // 阻止默认滚动行为
-  event.stopPropagation(); // 阻止事件冒泡
   if (scrollTimeout) {
     clearTimeout(scrollTimeout);
   }
 
-  // 将防抖时间从 100 毫秒减少到 50 毫秒
+  // 增加防抖时间到 200 毫秒，以确保滚动更加平滑
   scrollTimeout = setTimeout(() => {
-    // 这里是你的滚动处理逻辑
     processScroll(event);
-  }, 20);
+  }, 200);
 }
 
 function processScroll(event) {
@@ -688,7 +703,6 @@ function processScroll(event) {
 
   const currentTime = new Date().getTime();
   if (currentTime - lastScrollTime < 1000) {
-    event.preventDefault();
     return;
   }
 
@@ -697,7 +711,6 @@ function processScroll(event) {
   const { userSelections, allSelected } = getUserSelections();
 
   if (!allSelected) {
-    event.preventDefault();
     alert("Please select an option for each symptom before continuing.");
     return;
   }
@@ -742,6 +755,22 @@ function processScroll(event) {
     closestCard = newResultCards[newResultCards.length - 1];
     scrollToCard(closestCard);
   }
+}
+
+// 禁用症状框的滚动处理
+function disableSymptomScrolling() {
+  const symptomListContainers = document.querySelectorAll(".symptom_list");
+  symptomListContainers.forEach((container) => {
+    container.style.pointerEvents = "none"; // 禁用用户的滚动事件
+  });
+}
+
+// 启用症状框的滚动处理
+function enableSymptomScrolling() {
+  const symptomListContainers = document.querySelectorAll(".symptom_list");
+  symptomListContainers.forEach((container) => {
+    container.style.pointerEvents = "auto"; // 启用用户的滚动事件
+  });
 }
 
 // 绑定滚动事件
