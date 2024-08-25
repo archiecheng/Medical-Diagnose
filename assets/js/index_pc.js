@@ -668,6 +668,8 @@ function scrollToCard(targetCard) {
 let scrollTimeout;
 
 function handleScroll(event) {
+  event.preventDefault(); // 阻止默认滚动行为
+  event.stopPropagation(); // 阻止事件冒泡
   if (scrollTimeout) {
     clearTimeout(scrollTimeout);
   }
