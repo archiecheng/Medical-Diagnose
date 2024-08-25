@@ -992,11 +992,11 @@
         "Possibility": 0.14
       },
       {
-        "SymptomName": "lumps that form on the skin and may break open",
+        "SymptomName": "itchiness (pruritus)",
         "Possibility": 0.14
       },
       {
-        "SymptomName": "enlarged lymph nodes",
+        "SymptomName": "dry, cracked skin",
         "Possibility": 0.14
       },
       {
@@ -1066,35 +1066,15 @@
         "Possibility": 0.1
       },
       {
-        "SymptomName": "joint pain, stiffness and swelling",
+        "SymptomName": "oozing and crusting",
         "Possibility": 0.1
       },
       {
-        "SymptomName": "butterfly-shaped rash on the face that covers the cheeks and bridge of the nose or rashes elsewhere on the body",
+        "SymptomName": "darkening of the skin around the eyes",
         "Possibility": 0.1
       },
       {
-        "SymptomName": "skin lesions that appear or worsen with sun exposure",
-        "Possibility": 0.1
-      },
-      {
-        "SymptomName": "fingers and toes that turn white or blue when exposed to cold or during stressful periods",
-        "Possibility": 0.1
-      },
-      {
-        "SymptomName": "shortness of breath",
-        "Possibility": 0.1
-      },
-      {
-        "SymptomName": "chest pain",
-        "Possibility": 0.1
-      },
-      {
-        "SymptomName": "dry eyes",
-        "Possibility": 0.1
-      },
-      {
-        "SymptomName": "headaches, confusion and memory loss",
+        "SymptomName": "raw, sensitive skin from scratching",
         "Possibility": 0.1
       }
     ]
@@ -1117,7 +1097,7 @@
         "Possibility": 0.14
       },
       {
-        "SymptomName": "blisters, perhaps with oozing and crusting",
+        "SymptomName": "small, raised bumps, on brown or black skin",
         "Possibility": 0.14
       },
       {
@@ -1129,7 +1109,7 @@
         "Possibility": 0.14
       },
       {
-        "SymptomName": "small, raised bumps, more typical on brown or black skin",
+        "SymptomName": "raw, sensitive skin from scratching",
         "Possibility": 0.14
       }
     ]
@@ -1144,7 +1124,7 @@
         "Possibility": 0.12
       },
       {
-        "SymptomName": "a rash whose center tends to clear as the rash spreads",
+        "SymptomName": "dry, cracked, scaly skin, more typical on white skin",
         "Possibility": 0.12
       },
       {
@@ -1160,11 +1140,11 @@
         "Possibility": 0.12
       },
       {
-        "SymptomName": "scaly skin",
+        "SymptomName": "thickened skin",
         "Possibility": 0.12
       },
       {
-        "SymptomName": "a rash that might be red, brown, purple or gray depending on your skin color",
+        "SymptomName": "raw, sensitive skin from scratching",
         "Possibility": 0.12
       }
     ]
